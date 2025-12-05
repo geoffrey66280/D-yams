@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=3 uid="uid://bxo782mwiqcvx"]
+
+[ext_resource type="Texture2D" uid="uid://bnf7eh0wcl6xe" path="res://assets/sprites/de_1.png" id="1_eyaxs"]
+[ext_resource type="Texture2D" uid="uid://bv0tncd4ehx08" path="res://assets/sprites/de_3.png" id="2_g2xah"]
+[ext_resource type="Texture2D" uid="uid://b50acvtq0eo05" path="res://assets/sprites/de_4.png" id="3_1mdaq"]
+[ext_resource type="Texture2D" uid="uid://bcmhko83p38ah" path="res://assets/sprites/de_5.png" id="4_t6wau"]
+[ext_resource type="Texture2D" uid="uid://bosrvkq6q52vw" path="res://assets/sprites/de_6.png" id="5_8xlrf"]
+[ext_resource type="Texture2D" uid="uid://dsirsunq7bgr3" path="res://assets/sprites/de_2.png" id="6_a7aop"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -260.0
+offset_right = -69.0
+offset_bottom = -209.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_eyaxs")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -132.0
+offset_right = -69.0
+offset_bottom = -81.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("2_g2xah")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -68.0
+offset_right = -69.0
+offset_bottom = -17.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("3_1mdaq")
+
+[node name="TextureRect4" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -4.0
+offset_right = -69.0
+offset_bottom = 47.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("4_t6wau")
+
+[node name="TextureRect5" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = 124.0
+offset_right = -69.0
+offset_bottom = 175.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("5_8xlrf")
+
+[node name="TextureRect6" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -196.0
+offset_right = -69.0
+offset_bottom = -145.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("6_a7aop")
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 928.0
+offset_top = 576.0
+offset_right = 1152.0
+offset_bottom = 616.0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 992.0
+offset_top = 392.0
+offset_right = 1120.0
+offset_bottom = 424.0
