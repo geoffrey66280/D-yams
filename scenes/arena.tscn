@@ -6,38 +6,38 @@
 bounce = 0.6
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e05a3"]
-size = Vector2(20, 93)
+size = Vector2(55, 266.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wl4x5"]
-size = Vector2(219, 15)
+size = Vector2(643, 29.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_olpmc"]
-size = Vector2(20, 90)
+size = Vector2(23.75, 228.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdvfk"]
-size = Vector2(213, 15)
+size = Vector2(565.5, 35.5)
 
 [node name="Arena" type="StaticBody2D"]
 position = Vector2(1, 1)
 physics_material_override = SubResource("PhysicsMaterial_ug7gw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(119.07354, 48.14843)
-scale = Vector2(1.0006129, 0.70212036)
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(587, 309.99997)
+scale = Vector2(1.8250002, 1.8249999)
 texture = ExtResource("1_e05a3")
 
 [node name="Mur1" type="CollisionShape2D" parent="."]
-position = Vector2(10, 49)
+position = Vector2(359, 322)
 shape = SubResource("RectangleShape2D_e05a3")
 
 [node name="Mur2" type="CollisionShape2D" parent="."]
-position = Vector2(123, 6.5)
+position = Vector2(561, 186)
 shape = SubResource("RectangleShape2D_wl4x5")
 
 [node name="Mur3" type="CollisionShape2D" parent="."]
-position = Vector2(228, 50)
+position = Vector2(796, 313)
 shape = SubResource("RectangleShape2D_olpmc")
 
 [node name="Mur4" type="CollisionShape2D" parent="."]
-position = Vector2(120, 89.5)
+position = Vector2(602, 441)
 shape = SubResource("RectangleShape2D_xdvfk")

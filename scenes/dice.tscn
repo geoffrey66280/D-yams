@@ -58,7 +58,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
-size = Vector2(12, 12)
+size = Vector2(32, 32)
 
 [node name="Dice" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_mg5ex")
@@ -66,19 +66,19 @@ gravity_scale = 0.0
 script = ExtResource("1_0e48y")
 
 [node name="RollingDice" type="AnimatedSprite2D" parent="."]
-position = Vector2(6.000001, 6.000001)
-scale = Vector2(0.75, 0.75)
+position = Vector2(16, 16)
+scale = Vector2(1.9999999, 1.9999999)
 sprite_frames = SubResource("SpriteFrames_ir8iy")
 animation = &"rolling"
 autoplay = "rolling"
 
 [node name="CollisionDice" type="CollisionShape2D" parent="."]
-position = Vector2(6, 6)
+position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_0e48y")
 
 [node name="FinalDiceResult" type="Sprite2D" parent="."]
-position = Vector2(6, 6)
-scale = Vector2(0.75, 0.75)
+position = Vector2(16, 16)
+scale = Vector2(2, 2)
 texture = ExtResource("3_oi81l")
 
 [connection signal="animation_finished" from="RollingDice" to="." method="_on_animated_sprite_2d_animation_finished"]

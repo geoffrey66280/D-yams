@@ -5,16 +5,16 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Dice" parent="." instance=ExtResource("1_keuvm")]
-position = Vector2(429, 542)
+position = Vector2(641, 318)
 
 [node name="Dice2" parent="." instance=ExtResource("1_keuvm")]
-position = Vector2(407, 535)
+position = Vector2(565, 299)
 
 [node name="Dice3" parent="." instance=ExtResource("1_keuvm")]
-position = Vector2(389, 537)
+position = Vector2(502, 306)
 
 [node name="Dice4" parent="." instance=ExtResource("1_keuvm")]
-position = Vector2(366, 542)
+position = Vector2(447, 306)
 
 [node name="Dice5" parent="." instance=ExtResource("1_keuvm")]
-position = Vector2(337, 539)
+position = Vector2(394, 310)
