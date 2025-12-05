@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmupv2rrcp0jb"]
+
+[ext_resource type="Script" uid="uid://xhjyypitkrtp" path="res://scenes/ligne_score.gd" id="1_afhqu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c3kgp"]
+bg_color = Color(0, 0.5803922, 1, 1)
+corner_radius_top_left = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_afhqu"]
+bg_color = Color(1, 0.3019608, 0.3019608, 1)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+
+[node name="LigneScore" type="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 86.0
+offset_bottom = 23.0
+script = ExtResource("1_afhqu")
+
+[node name="NomMain" type="Label" parent="."]
+layout_mode = 2
+text = "Paire"
+
+[node name="Espaceur" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ZoneScore" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="FondBleu" type="PanelContainer" parent="ZoneScore"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c3kgp")
+
+[node name="Label" type="Label" parent="ZoneScore/FondBleu"]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 1
+
+[node name="LabelX" type="Label" parent="ZoneScore"]
+layout_mode = 2
+text = " X "
+
+[node name="FondRouge" type="PanelContainer" parent="ZoneScore"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_afhqu")
+
+[node name="Label" type="Label" parent="ZoneScore/FondRouge"]
+layout_mode = 2
+text = "2"
+horizontal_alignment = 1
