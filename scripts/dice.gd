@@ -10,9 +10,10 @@ func _ready():
 	
 func _process(delta: float) -> void:
 	if not sleeping and is_stopped():
+		set_process(false)
+		sleeping = true
 		final_random_value = randi() % 6 + 1
 		$RollingDice.stop()
-		sleeping = true
 		var tex = load("res://assets/sprites/de_" + str(final_random_value) + ".png")
 		$FinalDiceResult.texture = tex
 		$RollingDice.hide()
