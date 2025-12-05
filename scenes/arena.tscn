@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://did4wp5bdplnd"]
+
+[ext_resource type="Texture2D" uid="uid://cbewjjbbdsigd" path="res://assets/sprites/plateau.png" id="1_e05a3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ug7gw"]
+bounce = 0.6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e05a3"]
+size = Vector2(20, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wl4x5"]
+size = Vector2(219, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olpmc"]
+size = Vector2(20, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdvfk"]
+size = Vector2(213, 15)
+
+[node name="Arena" type="StaticBody2D"]
+position = Vector2(1, 1)
+physics_material_override = SubResource("PhysicsMaterial_ug7gw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(119.07354, 48.14843)
+scale = Vector2(1.0006129, 0.70212036)
+texture = ExtResource("1_e05a3")
+
+[node name="Mur1" type="CollisionShape2D" parent="."]
+position = Vector2(10, 49)
+shape = SubResource("RectangleShape2D_e05a3")
+
+[node name="Mur2" type="CollisionShape2D" parent="."]
+position = Vector2(123, 6.5)
+shape = SubResource("RectangleShape2D_wl4x5")
+
+[node name="Mur3" type="CollisionShape2D" parent="."]
+position = Vector2(228, 50)
+shape = SubResource("RectangleShape2D_olpmc")
+
+[node name="Mur4" type="CollisionShape2D" parent="."]
+position = Vector2(120, 89.5)
+shape = SubResource("RectangleShape2D_xdvfk")

@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://wrp24du2r1p5"]
+
+[ext_resource type="Script" uid="uid://c7aehc7wsjdsh" path="res://scripts/level_information.gd" id="1_eljov"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6f8om"]
+
+[node name="LevelInformation" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_eljov")
+
+[node name="BossName" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Nom du boss"
+label_settings = SubResource("LabelSettings_6f8om")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 109.0
+offset_bottom = 63.0
+text = "Goal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reward" type="Label" parent="."]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 104.0
+offset_right = 107.0
+offset_bottom = 127.0
+text = "Reward"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerScore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 168.0
+offset_right = 127.0
+offset_bottom = 191.0
+text = "player score"
+horizontal_alignment = 1
+vertical_alignment = 1
