@@ -1,109 +1,84 @@
-[gd_scene load_steps=12 format=3 uid="uid://teywtc2hipr0"]
+[gd_scene load_steps=13 format=3 uid="uid://teywtc2hipr0"]
 
 [ext_resource type="Script" uid="uid://d0x6hme17ua2e" path="res://scripts/dice.gd" id="1_0e48y"]
-[ext_resource type="Texture2D" uid="uid://mfdpgaf1ef1m" path="res://assets/sprites/six sided die.png" id="2_epypp"]
+[ext_resource type="Texture2D" uid="uid://dsm4ponyom4yf" path="res://assets/sprites/de_sheet.png" id="2_mg5ex"]
+[ext_resource type="Texture2D" uid="uid://b50acvtq0eo05" path="res://assets/sprites/de_4.png" id="3_oi81l"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mg5ex"]
-friction = 0.45
-bounce = 0.3
+bounce = 0.5
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
-atlas = ExtResource("2_epypp")
-region = Rect2(0, 224, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_oi81l"]
+atlas = ExtResource("2_mg5ex")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q6r6c"]
-atlas = ExtResource("2_epypp")
-region = Rect2(16, 224, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1ht6"]
+atlas = ExtResource("2_mg5ex")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_kdubu"]
-atlas = ExtResource("2_epypp")
-region = Rect2(32, 224, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_yk8ku"]
+atlas = ExtResource("2_mg5ex")
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d21ai"]
-atlas = ExtResource("2_epypp")
-region = Rect2(48, 224, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tannu"]
+atlas = ExtResource("2_mg5ex")
+region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rj586"]
-atlas = ExtResource("2_epypp")
-region = Rect2(64, 224, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_pb8pk"]
+atlas = ExtResource("2_mg5ex")
+region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4d7sh"]
-atlas = ExtResource("2_epypp")
-region = Rect2(80, 224, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocjtb"]
+atlas = ExtResource("2_mg5ex")
+region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ir8iy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0hol4")
+"texture": SubResource("AtlasTexture_oi81l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q6r6c")
+"texture": SubResource("AtlasTexture_o1ht6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kdubu")
+"texture": SubResource("AtlasTexture_yk8ku")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d21ai")
+"texture": SubResource("AtlasTexture_tannu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rj586")
+"texture": SubResource("AtlasTexture_pb8pk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4d7sh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q6r6c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kdubu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d21ai")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rj586")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4d7sh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q6r6c")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kdubu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d21ai")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rj586")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4d7sh")
+"texture": SubResource("AtlasTexture_ocjtb")
 }],
-"loop": false,
+"loop": true,
 "name": &"rolling",
 "speed": 18.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
-size = Vector2(100, 100)
+size = Vector2(12, 12)
 
 [node name="Dice" type="RigidBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_mg5ex")
 gravity_scale = 0.0
 script = ExtResource("1_0e48y")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(50.5, 50.5)
-scale = Vector2(6.3125, 6.3125)
+[node name="RollingDice" type="AnimatedSprite2D" parent="."]
+position = Vector2(6.000001, 6.000001)
+scale = Vector2(0.75, 0.75)
 sprite_frames = SubResource("SpriteFrames_ir8iy")
 animation = &"rolling"
 autoplay = "rolling"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(50.5, 50.49997)
+[node name="CollisionDice" type="CollisionShape2D" parent="."]
+position = Vector2(6, 6)
 shape = SubResource("RectangleShape2D_0e48y")
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="FinalDiceResult" type="Sprite2D" parent="."]
+position = Vector2(6, 6)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_oi81l")
+
+[connection signal="animation_finished" from="RollingDice" to="." method="_on_animated_sprite_2d_animation_finished"]
