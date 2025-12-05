@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1ndrev16ht6h"]
+
+[ext_resource type="PackedScene" uid="uid://teywtc2hipr0" path="res://scenes/dice.tscn" id="1_keuvm"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Dice" parent="." instance=ExtResource("1_keuvm")]
+position = Vector2(822, 430)
+
+[node name="Dice2" parent="." instance=ExtResource("1_keuvm")]
+position = Vector2(663, 436)
+
+[node name="Dice3" parent="." instance=ExtResource("1_keuvm")]
+position = Vector2(503, 449)
+
+[node name="Dice4" parent="." instance=ExtResource("1_keuvm")]
+position = Vector2(355, 445)
+
+[node name="Dice5" parent="." instance=ExtResource("1_keuvm")]
+position = Vector2(207, 459)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(703, 523)
