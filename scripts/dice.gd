@@ -40,7 +40,6 @@ func _process(delta: float) -> void:
 			$FinalDiceResult.show()
 			# Envoi de la valeur du dé au parent (throwing dice)
 			emit_signal('dice_value', final_random_value)
-			reset_dice_position()
 		
 # Lance le dé avec une force aléatoire
 func launch():
@@ -66,3 +65,4 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if(throwable):
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			emit_signal("kept", final_random_value, get_index())
+			reset_dice_position()
