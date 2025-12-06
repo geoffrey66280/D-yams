@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dlfdh15f0qkom"]
+
+[ext_resource type="FontFile" uid="uid://dcoaauksyu4hl" path="res://assets/fonts/Baskic8.otf" id="1_ex67f"]
+
+[resource]
+font = ExtResource("1_ex67f")

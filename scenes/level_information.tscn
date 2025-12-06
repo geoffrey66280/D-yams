@@ -1,8 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://wrp24du2r1p5"]
 
 [ext_resource type="Script" uid="uid://c7aehc7wsjdsh" path="res://scripts/level_information.gd" id="1_eljov"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_6f8om"]
+[ext_resource type="LabelSettings" uid="uid://dlfdh15f0qkom" path="res://assets/fonts/global_font.tres" id="2_jdgcw"]
 
 [node name="LevelInformation" type="Control"]
 layout_mode = 3
@@ -15,7 +14,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Nom du boss"
-label_settings = SubResource("LabelSettings_6f8om")
+label_settings = ExtResource("2_jdgcw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -26,6 +25,7 @@ offset_top = 40.0
 offset_right = 109.0
 offset_bottom = 63.0
 text = "Goal"
+label_settings = ExtResource("2_jdgcw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -36,6 +36,7 @@ offset_top = 104.0
 offset_right = 107.0
 offset_bottom = 127.0
 text = "Reward"
+label_settings = ExtResource("2_jdgcw")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -46,5 +47,6 @@ offset_top = 168.0
 offset_right = 127.0
 offset_bottom = 191.0
 text = "player score"
+label_settings = ExtResource("2_jdgcw")
 horizontal_alignment = 1
 vertical_alignment = 1
