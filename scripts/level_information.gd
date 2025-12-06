@@ -1,6 +1,7 @@
 extends Control
 
 var level_information = {
+	"kept_dices": [0,0,0,0,0],
 	"actual_lvl": 1,
 	"bosses": {
 		1: "The great barbarian",

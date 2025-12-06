@@ -61,6 +61,7 @@ animations = [{
 size = Vector2(32, 32)
 
 [node name="Dice" type="RigidBody2D"]
+input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_mg5ex")
 gravity_scale = 0.0
 script = ExtResource("1_0e48y")
@@ -81,4 +82,5 @@ position = Vector2(16, 16)
 scale = Vector2(2, 2)
 texture = ExtResource("3_oi81l")
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="RollingDice" to="." method="_on_animated_sprite_2d_animation_finished"]
