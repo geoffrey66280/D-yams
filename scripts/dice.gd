@@ -3,6 +3,7 @@ extends RigidBody2D
 # La variable rollingDice correspond à l'animation du dè qui est lancé
 # la variable FinalDiceResult représente l'état d'un dè immobile
 var base_position = 0
+var last_position = 0
 var allowed_values = []
 signal dice_value(result)
 signal kept(result, index)
@@ -10,16 +11,19 @@ var final_random_value = 0
 var throwable = true
 
 # récupère toutes les faces du dès actuel et son index
+@warning_ignore("unused_parameter")
 func set_level_information(dice_values, dice_index, is_throwable):
 	allowed_values = dice_values
 	throwable = is_throwable
 	
 func _ready():
 	base_position = global_transform.origin
+	last_position = global_transform.origin
 	$RollingDice.hide()
 	linear_damp = 2
 	angular_damp = 3
 	
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	# si le dès n'est plus en mouvement
 	if not sleeping and is_stopped():
@@ -57,9 +61,14 @@ func is_stopped() -> bool:
 	return linear_velocity.length() < 20 and abs(angular_velocity) < 1
 	
 func reset_dice_position():
-	global_transform.origin = base_position
+	if(global_transform.origin == base_position):
+		global_transform.origin = last_position
+	else:
+		last_position = global_transform.origin
+		global_transform.origin = base_position
 	rotation = 0
 	
+@warning_ignore("unused_parameter")
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if(throwable):
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
