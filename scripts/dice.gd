@@ -3,6 +3,7 @@ extends RigidBody2D
 # La variable rollingDice correspond à l'animation du dè qui est lancé
 # la variable FinalDiceResult représente l'état d'un dè immobile
 var base_position = 0
+var last_position = 0
 var allowed_values = []
 signal dice_value(result)
 signal kept(result, index)
@@ -17,6 +18,7 @@ func set_level_information(dice_values, dice_index, is_throwable):
 	
 func _ready():
 	base_position = global_transform.origin
+	last_position = global_transform.origin
 	$RollingDice.hide()
 	linear_damp = 2
 	angular_damp = 3
@@ -59,7 +61,11 @@ func is_stopped() -> bool:
 	return linear_velocity.length() < 20 and abs(angular_velocity) < 1
 	
 func reset_dice_position():
-	global_transform.origin = base_position
+	if(global_transform.origin == base_position):
+		global_transform.origin = last_position
+	else:
+		last_position = global_transform.origin
+		global_transform.origin = base_position
 	rotation = 0
 	
 @warning_ignore("unused_parameter")

@@ -5,6 +5,7 @@ var dices_kept = [0,0,0,0,0]
 var throwing_count = 3
 
 func _ready() -> void:
+	$KeepButton.hide()
 	for dice in get_children():
 		if dice is RigidBody2D:
 			if dice.has_signal("dice_value"):
@@ -12,7 +13,6 @@ func _ready() -> void:
 			dice.connect("kept", Callable(self, "_on_dice_kept"))
 	$KeepDicesLabel.hide()
 	$ScoreButton.hide()
-	$KeepButton.hide()
 
 func _on_dice_kept(result, index):
 	if(dices_kept[index] == 0):
@@ -59,22 +59,17 @@ func number_of_dices():
 	return dice_count
 	
 func change_keep_score_button_visibility():
-	if($KeepButton.visible == false):
-		$ThrowButton.disabled = true
-		if(throwing_count == 0):
-			$ScoreButton.show()
-		else:
-			$ScoreButton.show()
-			$KeepButton.show()
-	else:
-		$KeepButton.hide()
-		$ScoreButton.hide()
+	if(throwing_count > 0):
 		$ThrowButton.disabled = false
-	
+		$ScoreButton.show()
+	else:
+		$ThrowButton.disabled = true
+		$ScoreButton.show()
 
 
 func _on_throw_button_button_up() -> void:
 	if(throwing_count > 0):
+		$ScoreButton.hide()
 		$ThrowButton.disabled = true
 		call_deferred("_init_dices")
 		var index := 0
