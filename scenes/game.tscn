@@ -10,6 +10,9 @@
 =======
 [ext_resource type="PackedScene" uid="uid://dje0mys2bcroa" path="res://scenes/PopupCombination.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bbwu0goj8tpe6" path="res://scenes/MenuOptions.tscn" id="7_u5sy4"]
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 [node name="Game" type="Node2D"]
@@ -36,7 +39,10 @@ offset_right = 0.0
 offset_bottom = 0.0
 metadata/_edit_use_anchors_ = true
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 [node name="ButtonCombination" type="Button" parent="."]
 offset_left = -494.0
 offset_top = 87.0
