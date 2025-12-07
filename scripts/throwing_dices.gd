@@ -60,20 +60,20 @@ func number_of_dices():
 	
 func change_keep_score_button_visibility():
 	if($KeepButton.visible == false):
-		$ThrowButton.hide()
+		$ThrowButton.disabled = true
 		if(throwing_count > 0):
 			$KeepButton.show()
 		$ScoreButton.show()
 	else:
 		$KeepButton.hide()
 		$ScoreButton.hide()
-		$ThrowButton.show()
+		$ThrowButton.disabled = false
 	
 
 
 func _on_throw_button_button_up() -> void:
 	if(throwing_count > 0):
-		$ThrowButton.hide()
+		$ThrowButton.disabled = true
 		call_deferred("_init_dices")
 		var index := 0
 		for kept in dices_kept:

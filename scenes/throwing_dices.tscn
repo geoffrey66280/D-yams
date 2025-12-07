@@ -29,17 +29,17 @@ offset_bottom = 433.0
 text = "Throw"
 
 [node name="KeepButton" type="Button" parent="."]
-offset_left = 799.0
-offset_top = 401.0
-offset_right = 899.0
-offset_bottom = 433.0
+offset_left = 397.0
+offset_top = 539.0
+offset_right = 497.0
+offset_bottom = 571.0
 text = "Keep"
 
 [node name="ScoreButton" type="Button" parent="."]
-offset_left = 799.0
-offset_top = 437.0
-offset_right = 899.0
-offset_bottom = 471.0
+offset_left = 517.0
+offset_top = 538.0
+offset_right = 617.0
+offset_bottom = 572.0
 text = "Score"
 
 [node name="KeepDicesLabel" type="Label" parent="."]
