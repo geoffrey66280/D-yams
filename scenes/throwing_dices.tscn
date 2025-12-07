@@ -50,6 +50,6 @@ offset_bottom = 82.0
 text = "Select dices
 to keep"
 
-[connection signal="button_up" from="ThrowButton" to="." method="_on_throw_button_button_up"]
 [connection signal="button_up" from="ThrowButton" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="ThrowButton" to="." method="_on_throw_button_button_up"]
 [connection signal="button_up" from="KeepButton" to="." method="_on_keep_button_button_up"]

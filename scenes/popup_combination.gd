@@ -14,6 +14,7 @@ var les_mains = [
 ]
 
 func _ready():
+	visible = false
 	generer_la_liste()
 
 func generer_la_liste():
