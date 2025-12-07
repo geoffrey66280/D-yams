@@ -13,3 +13,9 @@ func _process(delta: float) -> void:
 
 func _on_button_pressed():
 	$PopupCombination.visible = not $PopupCombination.visible
+
+
+func _on_button_options_pressed():
+	if $PopupCombination.visible == true:
+		$PopupCombination.visible = false
+	$MenuOptions.visible = not $MenuOptions.visible
