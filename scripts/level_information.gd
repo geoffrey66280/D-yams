@@ -8,11 +8,12 @@ var level_information = {
 		2: "The ultimate goat",
 		3: "Heat the hitter"
 	},
-	"scores": {
+	"score_to_reach": {
 		1: "100",
 		2: "300",
 		3: "500"
 	},
+	"round_score": 0,
 	"user_dices": {
 		0: ["1", "2", "3", "4", "5", "6"],
 		1: ["1", "2", "3", "4", "5", "6"],
@@ -20,7 +21,38 @@ var level_information = {
 		3: ["1", "2", "3", "4", "5", "6"],
 		4: ["1", "2", "3", "4", "5", "6"],
 		5: ["1", "2", "3", "4", "5", "6"]
-	}
+	},
+	"combinations": [{
+		"name": "D-yams",
+		"tokens": 100,
+		"mult": 8,
+		},
+		{
+		"name": "4 of a kind",
+		"tokens": 60,
+		"mult": 5,
+		},
+		{
+		"name": "Full house",
+		"tokens": 40,
+		"mult": 4,
+		},
+		{
+		"name": "Large straight",
+		"tokens": 50,
+		"mult": 5,
+		},
+		{
+		"name": "Small straight",
+		"tokens": 30,
+		"mult": 3,
+		},
+		{
+		"name": "3 of a kind",
+		"tokens": 20,
+		"mult": 3,
+		},
+	],
 }
 
 
@@ -32,7 +64,7 @@ func _ready() -> void:
 	var reward = $Reward
 	var player_score = $PlayerScore
 	boss_name.text = level_information["bosses"][level_information["actual_lvl"]]
-	score.text = "Goal\n" + level_information["scores"][level_information["actual_lvl"]]
+	score.text = "Goal\n" + level_information["score_to_reach"][level_information["actual_lvl"]]
 	reward.text = "reward : " + str(level_information["actual_lvl"])
 	player_score.text = "score: 0"
 
@@ -40,3 +72,14 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+	
+func compute_score(dices_values: Array, user_combination: String):
+	var final_score: int = 0
+	var token: int = 0
+	for dice_value in dices_values:
+		token += dice_value
+	for combination in level_information["combinations"]:
+		if combination["name"] == user_combination:
+			token += combination["name"]["tokens"]
+			final_score = token * combination["name"]["mult"]
+	return final_score
