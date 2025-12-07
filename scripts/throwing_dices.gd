@@ -15,10 +15,11 @@ func _ready() -> void:
 	$ScoreButton.hide()
 
 func _on_dice_kept(result, index):
-	if(dices_kept[index] == 0):
-		dices_kept[index] = int(result)
-	else:
-		dices_kept[index] = 0
+	if(throwing_count > 0):
+		if(dices_kept[index] == 0):
+			dices_kept[index] = int(result)
+		else:
+			dices_kept[index] = 0
 
 func send_dices_values():
 	# Récupération des informations du level actuel
@@ -45,11 +46,18 @@ func send_dices_values():
 func _init_dices():
 	send_dices_values()
 
-func _on_dice_rolled(result):
-	dice_results.append(result)
-	if dice_results.size() == number_of_dices():
-		change_keep_score_button_visibility()
-		dice_results = []
+func _on_dice_rolled(result, index):
+	if(throwing_count == 0):
+		dice_results.append(result)
+		if dice_results.size() == number_of_dices():
+			change_keep_score_button_visibility()
+			dice_results = []
+		dices_kept[index] = result
+	else:
+		dice_results.append(result)
+		if dice_results.size() == number_of_dices():
+			change_keep_score_button_visibility()
+			dice_results = []
 
 func number_of_dices():
 	var dice_count = 0
