@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b6ofiia77k77a"]
+[gd_scene load_steps=10 format=3 uid="uid://b6ofiia77k77a"]
 
 [ext_resource type="Texture2D" uid="uid://bxa0xiwp0vn4j" path="res://assets/sprites/table.png" id="1_iywne"]
 [ext_resource type="Script" uid="uid://c4y1bmg4htenp" path="res://scripts/game.gd" id="1_u5sy4"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://wrp24du2r1p5" path="res://scenes/level_information.tscn" id="3_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cfaie0utf5d8m" path="res://scenes/PopupCombination.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bbwu0goj8tpe6" path="res://scenes/MenuOptions.tscn" id="7_u5sy4"]
+[ext_resource type="Texture2D" uid="uid://ee3wpimgd5f3" path="res://assets/sprites/button_options.png" id="8_gee14"]
+[ext_resource type="LabelSettings" uid="uid://di7nscev3345u" path="res://assets/fonts/button_font.tres" id="9_0tnpc"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u5sy4")
@@ -40,17 +42,30 @@ offset_bottom = 175.0
 text = "Mains"
 
 [node name="MenuOptions" parent="." instance=ExtResource("7_u5sy4")]
-offset_left = -320.0
+visible = false
+z_index = 5
+offset_left = 104.0
 offset_top = 32.0
-offset_right = -320.0
+offset_right = 104.0
 offset_bottom = 32.0
 
 [node name="ButtonOptions" type="Button" parent="."]
-offset_left = -312.0
-offset_top = -8.0
-offset_right = -242.0
-offset_bottom = 23.0
+offset_left = 278.0
+offset_top = 151.0
+offset_right = 324.0
+offset_bottom = 172.0
+icon = ExtResource("8_gee14")
+flat = true
+icon_alignment = 1
+
+[node name="Options_Label" type="Label" parent="ButtonOptions"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 8.0
+offset_right = 37.0
+offset_bottom = 17.0
 text = "Options"
+label_settings = ExtResource("9_0tnpc")
 
 [connection signal="pressed" from="ButtonCombination" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]
