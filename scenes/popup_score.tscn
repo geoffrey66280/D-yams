@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://blgxeyl4fldvk"]
+[gd_scene load_steps=6 format=3 uid="uid://ftg1igtjh1fe"]
 
+[ext_resource type="Script" uid="uid://bg5juk44yav8u" path="res://scripts/popup_score.gd" id="1_d0arr"]
 [ext_resource type="Texture2D" uid="uid://cse43ltj0f0cv" path="res://assets/sprites/button_score.png" id="1_tauwg"]
 [ext_resource type="LabelSettings" uid="uid://di7nscev3345u" path="res://assets/fonts/button_font.tres" id="2_exvef"]
 [ext_resource type="Texture2D" uid="uid://dlrbuggr0t3a6" path="res://assets/sprites/button_throw_pressed.png" id="2_ka76i"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_d0arr")
 
 [node name="Dyams_Button" type="TextureButton" parent="."]
 layout_mode = 0
@@ -31,7 +33,7 @@ offset_bottom = 13.0
 text = "Dyams"
 label_settings = ExtResource("2_exvef")
 
-[node name="4kind_Button" type="TextureButton" parent="."]
+[node name="Fourkind_Button" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 105.0
 offset_top = 38.0
@@ -40,7 +42,7 @@ offset_bottom = 52.0
 texture_normal = ExtResource("3_ka76i")
 texture_disabled = ExtResource("2_ka76i")
 
-[node name="4kind_Label" type="Label" parent="4kind_Button"]
+[node name="4kind_Label" type="Label" parent="Fourkind_Button"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 4.0
@@ -103,7 +105,7 @@ offset_bottom = 14.0
 text = "Small S"
 label_settings = ExtResource("2_exvef")
 
-[node name="3kind_Button" type="TextureButton" parent="."]
+[node name="Threekind_Button" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 137.0
 offset_top = 54.0
@@ -112,7 +114,7 @@ offset_bottom = 68.0
 texture_normal = ExtResource("3_ka76i")
 texture_disabled = ExtResource("2_ka76i")
 
-[node name="3kind_Label" type="Label" parent="3kind_Button"]
+[node name="3kind_Label" type="Label" parent="Threekind_Button"]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 5.0
@@ -121,7 +123,7 @@ offset_bottom = 14.0
 text = "3kind"
 label_settings = ExtResource("2_exvef")
 
-[node name="2Pairs_Button" type="TextureButton" parent="."]
+[node name="TwoPairs_Button" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 169.0
 offset_top = 54.0
@@ -130,7 +132,7 @@ offset_bottom = 68.0
 texture_normal = ExtResource("1_tauwg")
 texture_disabled = ExtResource("2_ka76i")
 
-[node name="2Pairs_Label" type="Label" parent="2Pairs_Button"]
+[node name="2Pairs_Label" type="Label" parent="TwoPairs_Button"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 5.0
@@ -174,3 +176,5 @@ offset_right = 25.0
 offset_bottom = 14.0
 text = "Chance"
 label_settings = ExtResource("2_exvef")
+
+[connection signal="button_up" from="Dyams_Button" to="." method="_on_dyams_button_button_up"]
