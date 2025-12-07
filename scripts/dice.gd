@@ -10,6 +10,7 @@ var final_random_value = 0
 var throwable = true
 
 # récupère toutes les faces du dès actuel et son index
+@warning_ignore("unused_parameter")
 func set_level_information(dice_values, dice_index, is_throwable):
 	allowed_values = dice_values
 	throwable = is_throwable
@@ -20,6 +21,7 @@ func _ready():
 	linear_damp = 2
 	angular_damp = 3
 	
+@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	# si le dès n'est plus en mouvement
 	if not sleeping and is_stopped():
@@ -60,6 +62,7 @@ func reset_dice_position():
 	global_transform.origin = base_position
 	rotation = 0
 	
+@warning_ignore("unused_parameter")
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if(throwable):
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
