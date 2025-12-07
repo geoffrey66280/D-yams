@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 			# arréter le process car sinon se relance très vite et duplique les résultats
 			set_process(false)
 			# Résultat du dé aléatoire selon la liste des faces du dè actuel
-			final_random_value = allowed_values[randi() % allowed_values.size()]
+			final_random_value = int(allowed_values[randi() % allowed_values.size()])
 			$RollingDice.stop()
 			# affichage de la texture du dé immobile
 			var tex = load("res://assets/sprites/de_" + str(final_random_value) + ".png")
@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 			$RollingDice.hide()
 			$FinalDiceResult.show()
 			# Envoi de la valeur du dé au parent (throwing dice)
-			emit_signal('dice_value', final_random_value)
+			emit_signal('dice_value', final_random_value, get_index())
 		
 # Lance le dé avec une force aléatoire
 func launch():

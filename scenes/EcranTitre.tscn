@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd8lb86450i4g"]
+
+[ext_resource type="Script" uid="uid://xmknga23x04d" path="res://scripts/ecran_titre.gd" id="1_2a7pj"]
+[ext_resource type="Texture2D" uid="uid://dcfmojtk6f2kf" path="res://assets/Dyams.png" id="1_bmonq"]
+[ext_resource type="PackedScene" uid="uid://bbwu0goj8tpe6" path="res://scenes/MenuOptions.tscn" id="3_crd2e"]
+
+[node name="EcranTitre" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2a7pj")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bmonq")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -56.5
+offset_right = 35.0
+offset_bottom = 56.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="TitreJeu" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 138.0
+offset_right = 111.0
+offset_bottom = 172.0
+theme_override_colors/font_color = Color(1, 0.1882353, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "D-Yams"
+
+[node name="MenuOptions" parent="." instance=ExtResource("3_crd2e")]
+layout_mode = 0
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
