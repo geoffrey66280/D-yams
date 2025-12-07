@@ -20,3 +20,8 @@ func _on_resolution_selected(index):
 		DisplayServer.window_set_size(Vector2i(1920, 1080))
 	elif index == 1:
 		DisplayServer.window_set_size(Vector2i(1280, 720))
+
+
+func _on_exit_button_pressed():
+	print("Fermeture du jeu...")
+	get_tree().quit()
