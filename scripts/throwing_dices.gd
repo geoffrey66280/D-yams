@@ -61,10 +61,11 @@ func number_of_dices():
 func change_keep_score_button_visibility():
 	if($KeepButton.visible == false):
 		$ThrowButton.disabled = true
-		if(throwing_count > 0):
-			$KeepButton.show()
+		if(throwing_count == 0):
+			$ScoreButton.show()
 		else:
 			$ScoreButton.show()
+			$KeepButton.show()
 	else:
 		$KeepButton.hide()
 		$ScoreButton.hide()
@@ -96,3 +97,7 @@ func _on_keep_button_button_up() -> void:
 	var level_info = level_info_node.level_information
 	level_info['kept_dices'] = dices_kept
 	change_keep_score_button_visibility()
+
+
+func _on_score_button_button_up() -> void:
+	pass # Replace with function body.

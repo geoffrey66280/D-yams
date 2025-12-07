@@ -26,17 +26,17 @@ texture = ExtResource("1_iywne")
 metadata/_edit_use_anchors_ = true
 
 [node name="PopupCombination" parent="." instance=ExtResource("4_lbhrr")]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
+offset_left = 160.0
+offset_top = 88.0
+offset_right = 160.0
+offset_bottom = 88.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonCombination" type="Button" parent="."]
-offset_left = -494.0
-offset_top = 87.0
-offset_right = -439.0
-offset_bottom = 118.0
+offset_left = 16.0
+offset_top = 144.0
+offset_right = 71.0
+offset_bottom = 175.0
 text = "Mains"
 
 [node name="MenuOptions" parent="." instance=ExtResource("7_u5sy4")]

@@ -1,18 +1,19 @@
 [gd_scene load_steps=2 format=3 uid="uid://cfaie0utf5d8m"]
 
-[ext_resource type="Script" path="res://scenes/popup_combination.gd" id="1_gn6a8"]
+[ext_resource type="Script" uid="uid://b8drhlokcbs32" path="res://scenes/popup_combination.gd" id="1_gn6a8"]
 
 [node name="PopupCombination" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 524.0
-offset_top = 307.0
-offset_right = -537.3334
-offset_bottom = -290.0
+offset_left = 153.33331
+offset_top = 98.5
+offset_right = -156.66669
+offset_bottom = -71.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_gn6a8")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

@@ -104,3 +104,4 @@ vertical_alignment = 1
 [connection signal="button_up" from="ThrowButton" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="ThrowButton" to="." method="_on_throw_button_button_up"]
 [connection signal="button_up" from="KeepButton" to="." method="_on_keep_button_button_up"]
+[connection signal="button_up" from="ScoreButton" to="." method="_on_score_button_button_up"]
