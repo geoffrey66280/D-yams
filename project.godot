@@ -17,19 +17,7 @@ config/icon="res://icon.svg"
 
 [display]
 
-<<<<<<< Updated upstream
-<<<<<<< HEAD
 window/subwindows/embed_subwindows=false
-=======
-window/size/viewport_width=320
-window/size/viewport_height=180
-window/size/window_width_override=1280
-window/size/window_height_override=720
-window/stretch/mode="canvas_items"
->>>>>>> 8bf405747a2099d1872c4e15fb4d48b734a6cc58
-=======
-window/subwindows/embed_subwindows=false
->>>>>>> Stashed changes
 
 [rendering]
 
