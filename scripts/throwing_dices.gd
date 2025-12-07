@@ -63,7 +63,8 @@ func change_keep_score_button_visibility():
 		$ThrowButton.disabled = true
 		if(throwing_count > 0):
 			$KeepButton.show()
-		$ScoreButton.show()
+		else:
+			$ScoreButton.show()
 	else:
 		$KeepButton.hide()
 		$ScoreButton.hide()

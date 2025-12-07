@@ -51,7 +51,7 @@ func launch():
 		var force = Vector2(randf_range(0, 400), randf_range(0, -600))
 		apply_impulse(force)
 		angular_velocity = randf_range(-1, 10)
-
+		
 # Renvoie si le dès est proche de s'arréter
 func is_stopped() -> bool:
 	return linear_velocity.length() < 20 and abs(angular_velocity) < 1
@@ -59,8 +59,7 @@ func is_stopped() -> bool:
 func reset_dice_position():
 	global_transform.origin = base_position
 	rotation = 0
-
-
+	
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if(throwable):
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
