@@ -80,7 +80,7 @@ func _on_throw_button_button_up() -> void:
 			if kept == 0:
 				var dice = get_child(index)
 				dice.sleeping = true
-				dice.global_transform.origin = Vector2(400 + index * 30,400)
+				dice.global_transform.origin = Vector2(100 + index * 30,100)
 				dice.launch()
 			index += 1
 		throwing_count -= 1

@@ -48,7 +48,7 @@ func launch():
 		$FinalDiceResult.hide()
 		$RollingDice.play()
 		$RollingDice.show()
-		var force = Vector2(randf_range(0, 800), randf_range(0, -1200))
+		var force = Vector2(randf_range(0, 400), randf_range(0, -600))
 		apply_impulse(force)
 		angular_velocity = randf_range(-1, 10)
 
