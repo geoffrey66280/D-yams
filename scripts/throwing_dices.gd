@@ -104,7 +104,7 @@ func _on_keep_button_button_up() -> void:
 
 func _on_score_button_button_up() -> void:
 	var pop_up_score = get_node("../../popup_score")
-	if(pop_up_score.visible == false):
+	if (pop_up_score.visible == false):
 		pop_up_score.change_combinations_visibility(dices_kept)
 		pop_up_score.visible = true
 	else:
