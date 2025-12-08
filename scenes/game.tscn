@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bbwu0goj8tpe6" path="res://scenes/MenuOptions.tscn" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://ee3wpimgd5f3" path="res://assets/sprites/button_options.png" id="8_gee14"]
 [ext_resource type="LabelSettings" uid="uid://di7nscev3345u" path="res://assets/fonts/button_font.tres" id="9_0tnpc"]
-[ext_resource type="PackedScene" path="res://scenes/popup_score.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://ftg1igtjh1fe" path="res://scenes/popup_score.tscn" id="10_vtaks"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u5sy4")
@@ -72,3 +72,4 @@ label_settings = ExtResource("9_0tnpc")
 
 [connection signal="pressed" from="ButtonCombination" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="combination" from="popup_score" to="Arena/ThrowingDices" method="_on_popup_score_combination"]

@@ -41,12 +41,15 @@ func _ready() -> void:
 	level_information["actual_lvl"] = 1
 	update_ui()
 
-func update_ui() -> void:
+func update_ui(score = null) -> void:
 	# Séparer la mise à jour UI rend le code plus propre
 	$BossName.text = level_information["bosses"][level_information["actual_lvl"]]
 	$Score.text = "Goal\n" + level_information["score_to_reach"][level_information["actual_lvl"]]
 	$Reward.text = "reward : " + str(level_information["actual_lvl"])
-	$PlayerScore.text = "score: 0"
+	if(score):
+		$PlayerScore.text = "score: " + str(score)
+	else:
+		$PlayerScore.text = "score: 0"
 
 func compute_score(dices_values: Array, user_combination_name: String) -> int:
 	var final_score: int = 0

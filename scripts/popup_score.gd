@@ -1,5 +1,7 @@
 extends Control
 
+signal combination(combination_name)
+
 func _ready() -> void:
 	visible = false
 
@@ -38,3 +40,42 @@ func change_combinations_visibility(dices: Array):
 				$Pair_Button.disabled = false
 			"Chance":
 				$Chance_Button.disabled = false
+				
+func emit_combination(combination_name: String):
+	emit_signal('combination', combination_name)
+
+
+func _on_dyams_button_button_up() -> void:
+	emit_combination("D-yams")
+
+
+func _on_fourkind_button_button_up() -> void:
+	emit_combination("4 of a kind")
+
+
+func _on_full_house_button_button_up() -> void:
+	emit_combination("Full house")
+
+
+func _on_large_s_button_button_up() -> void:
+	emit_combination("Large straight")
+
+
+func _on_small_s_button_button_up() -> void:
+	emit_combination("Small straight")
+
+
+func _on_threekind_button_button_up() -> void:
+	emit_combination("3 of a kind")
+
+
+func _on_two_pairs_button_button_up() -> void:
+	emit_combination("Double pair")
+
+
+func _on_pair_button_button_up() -> void:
+	emit_combination("Pair")
+
+
+func _on_chance_button_button_up() -> void:
+	emit_combination("Chance")

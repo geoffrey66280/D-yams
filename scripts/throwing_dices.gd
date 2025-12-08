@@ -109,3 +109,12 @@ func _on_score_button_button_up() -> void:
 		pop_up_score.visible = true
 	else:
 		pop_up_score.visible = false
+		
+
+
+func _on_popup_score_combination(combination_name: Variant) -> void:
+	var level_info_node = get_node("../../LevelInformation")
+	var scored = level_info_node.compute_score(dices_kept, combination_name)
+	level_info_node.update_ui(scored)
+	_on_score_button_button_up()
+	$ScoreButton.hide()

@@ -178,3 +178,11 @@ text = "Chance"
 label_settings = ExtResource("2_exvef")
 
 [connection signal="button_up" from="Dyams_Button" to="." method="_on_dyams_button_button_up"]
+[connection signal="button_up" from="Fourkind_Button" to="." method="_on_fourkind_button_button_up"]
+[connection signal="button_up" from="FullHouse_Button" to="." method="_on_full_house_button_button_up"]
+[connection signal="button_up" from="LargeS_Button" to="." method="_on_large_s_button_button_up"]
+[connection signal="button_up" from="SmallS_Button" to="." method="_on_small_s_button_button_up"]
+[connection signal="button_up" from="Threekind_Button" to="." method="_on_threekind_button_button_up"]
+[connection signal="button_up" from="TwoPairs_Button" to="." method="_on_two_pairs_button_button_up"]
+[connection signal="button_up" from="Pair_Button" to="." method="_on_pair_button_button_up"]
+[connection signal="button_up" from="Chance_Button" to="." method="_on_chance_button_button_up"]
