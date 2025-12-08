@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b6ofiia77k77a"]
+[gd_scene load_steps=11 format=3 uid="uid://b6ofiia77k77a"]
 
 [ext_resource type="Texture2D" uid="uid://bxa0xiwp0vn4j" path="res://assets/sprites/table.png" id="1_iywne"]
 [ext_resource type="Script" uid="uid://c4y1bmg4htenp" path="res://scripts/game.gd" id="1_u5sy4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bbwu0goj8tpe6" path="res://scenes/MenuOptions.tscn" id="7_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://ee3wpimgd5f3" path="res://assets/sprites/button_options.png" id="8_gee14"]
 [ext_resource type="LabelSettings" uid="uid://di7nscev3345u" path="res://assets/fonts/button_font.tres" id="9_0tnpc"]
+[ext_resource type="PackedScene" path="res://scenes/popup_score.tscn" id="10_vtaks"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u5sy4")
@@ -66,6 +67,8 @@ offset_right = 37.0
 offset_bottom = 17.0
 text = "Options"
 label_settings = ExtResource("9_0tnpc")
+
+[node name="popup_score" parent="." instance=ExtResource("10_vtaks")]
 
 [connection signal="pressed" from="ButtonCombination" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]
