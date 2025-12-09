@@ -3,15 +3,16 @@ extends Control
 var level_information: Dictionary = {
 	"kept_dices": [0, 0, 0, 0, 0],
 	"actual_lvl": 1,
+	"user_money": 0,
 	"bosses": {
 		1: "The great barbarian",
 		2: "The ultimate goat",
 		3: "Heat the hitter"
 	},
 	"score_to_reach": {
-		1: "100",
-		2: "300",
-		3: "500"
+		1: 50,
+		2: 100,
+		3: 200,
 	},
 	"round_score": 0,
 	"user_dices": {
@@ -44,7 +45,7 @@ func _ready() -> void:
 func update_ui(score = null) -> void:
 	# Séparer la mise à jour UI rend le code plus propre
 	$BossName.text = level_information["bosses"][level_information["actual_lvl"]]
-	$Score.text = "Goal\n" + level_information["score_to_reach"][level_information["actual_lvl"]]
+	$Score.text = "Goal\n" + str(level_information["score_to_reach"][level_information["actual_lvl"]])
 	$Reward.text = "reward : " + str(level_information["actual_lvl"])
 	if(score):
 		$PlayerScore.text = "score: " + str(score)

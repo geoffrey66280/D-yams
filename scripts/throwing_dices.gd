@@ -74,10 +74,16 @@ func change_keep_score_button_visibility():
 		$ThrowButton.disabled = true
 		$ScoreButton.show()
 
+func are_dices_all_selectioned():
+	for dice in dices_kept:
+		if dice == 0:
+			return false
+	return true
+
 
 func _on_throw_button_button_up() -> void:
-	if(throwing_count > 0):
-		$ScoreButton.hide()
+	if(throwing_count > 0 and not are_dices_all_selectioned()):
+		$ScoreButton.show()
 		$ThrowButton.disabled = true
 		call_deferred("_init_dices")
 		var index := 0
@@ -118,3 +124,17 @@ func _on_popup_score_combination(combination_name: Variant) -> void:
 	level_info_node.update_ui(scored)
 	_on_score_button_button_up()
 	$ScoreButton.hide()
+	pass_level(scored)
+	
+func pass_level(score):
+	var level_info_node = get_node("../../LevelInformation")
+	var level_info = level_info_node.level_information
+	throwing_count = 3
+	dices_kept = [0,0,0,0,0]
+	if(score >= level_info["score_to_reach"][level_info["actual_lvl"]]):
+		level_info["user_money"] += level_info["actual_lvl"]
+		level_info["actual_lvl"] += 1
+		level_info_node.update_ui()
+		change_keep_score_button_visibility()
+	else:
+		print('you loose')
