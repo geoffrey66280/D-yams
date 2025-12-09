@@ -18,6 +18,7 @@ var power_ups = [
 	{"id": 15, "name": "Dice Reversal", "description": "All dice values are reversed (6 becomes 1, etc.) (1 round)", "rarity": 2},
 ]
 
+# récupère 3 powerups pour les proposer au joueur (1 choix possible)
 func get_3_random_power_ups(powerups: Array) -> Array:
 	var offered: Array = []
 
@@ -38,6 +39,9 @@ func get_3_random_power_ups(powerups: Array) -> Array:
 		pool.remove_at(index)  # on enlève l'élément tiré
 	return offered
 	
+	
+# changer la valeur d'une face d'un dé dans levelinfo en récupérant l'index du dé
+# l'index de la valeur à remplacer et la valeur à mettre
 func replace_dice_value_forever(dice_index: int, value_index: int, value: int):
 	pass
 
@@ -47,6 +51,7 @@ func get_extra_reroll():
 func reroll_one_dice():
 	pass
 	
+# si half est true alors diamond multiplier *2 dans levelinfo
 func change_next_round_score(half = null, double = null):
 	if(double == true):
 		pass
@@ -54,18 +59,26 @@ func change_next_round_score(half = null, double = null):
 		pass
 		# diamond * 2
 	
+# valider la combinaison meme si la combinaison n'est pas faite
 func automatically_valid_combination(combination_name: String):
 	pass
 	
+# changer le random
 func add_twenty_percent_score(score: int):
 	pass
 	
+# changer le random
 func favors_dice_values(high = null, low = null):
 	pass
 	
+# changer actual_lvl et diamond multiplier dans levelinfo
 func skip_next_level():
 	# earn *2 diamond next round
 	pass
 	
+# dans tous les dès du joueur
+# 1 devient 6 et inversement
+# 2 devient 5 et inversement
+# 3 devient 4 et inversement
 func reverse_dices_values():
 	pass

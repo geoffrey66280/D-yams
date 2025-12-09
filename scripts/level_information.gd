@@ -3,7 +3,8 @@ extends Control
 var level_information: Dictionary = {
 	"kept_dices": [0, 0, 0, 0, 0],
 	"actual_lvl": 1,
-	"user_money": 0,
+	"user_diamond": 0,
+	"diamond_multiplier": 1,
 	"bosses": {
 		1: "The great barbarian",
 		2: "The ultimate goat",
