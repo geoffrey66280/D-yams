@@ -74,6 +74,8 @@ offset_top = 24.0
 offset_right = 32.0
 offset_bottom = 24.0
 
+[connection signal="score_combination" from="Arena/ThrowingDices" to="LevelInformation" method="_on_throwing_dices_score_combination"]
+[connection signal="score_ui" from="Arena/ThrowingDices" to="LevelInformation" method="_on_throwing_dices_score_ui"]
 [connection signal="pressed" from="ButtonCombination" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]
 [connection signal="combination" from="popup_score" to="Arena/ThrowingDices" method="_on_popup_score_combination"]

@@ -67,6 +67,10 @@ func reset_dice_position():
 		last_position = global_transform.origin
 		global_transform.origin = base_position
 	rotation = 0
+
+func reset_right_position():
+	last_position = global_transform.origin
+	global_transform.origin = base_position
 	
 @warning_ignore("unused_parameter")
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -74,3 +78,9 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			emit_signal("kept", final_random_value, get_index())
 			reset_dice_position()
+
+func animate_score(pitch):
+	$ScoreAnimation.play("score")
+	$ScoreSound.pitch_scale = pitch
+	$ScoreSound.play()
+	await get_tree().create_timer(0.5).timeout

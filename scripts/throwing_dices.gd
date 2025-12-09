@@ -3,6 +3,10 @@ extends Node2D
 var dice_results: Array = []
 var dices_kept = [0,0,0,0,0]
 var throwing_count = 3
+var animation_score_pitch = 1
+
+signal score_ui(tokens)
+signal score_combination(combination_name)
 
 func _ready() -> void:
 	$KeepButton.hide()
@@ -121,9 +125,18 @@ func _on_score_button_button_up() -> void:
 func _on_popup_score_combination(combination_name: Variant) -> void:
 	var level_info_node = get_node("../../LevelInformation")
 	var scored = level_info_node.compute_score(dices_kept, combination_name)
-	level_info_node.update_ui(scored)
 	_on_score_button_button_up()
 	$ScoreButton.hide()
+	emit_signal("score_combination", combination_name)
+	for dice in get_children():
+		if dice is RigidBody2D:
+			dice.reset_right_position()
+			animation_score_pitch += 0.05
+			dice.animate_score(animation_score_pitch)
+			emit_signal("score_ui", dice.final_random_value)
+			await dice.animate_score(animation_score_pitch)
+	animation_score_pitch = 1
+	await level_info_node.update_ui(scored)
 	pass_level(scored)
 	
 func pass_level(score):

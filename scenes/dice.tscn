@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://teywtc2hipr0"]
+[gd_scene load_steps=17 format=3 uid="uid://teywtc2hipr0"]
 
 [ext_resource type="Script" uid="uid://d0x6hme17ua2e" path="res://scripts/dice.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://dsm4ponyom4yf" path="res://assets/sprites/de_sheet.png" id="2_mg5ex"]
 [ext_resource type="Texture2D" uid="uid://b50acvtq0eo05" path="res://assets/sprites/de_4.png" id="3_oi81l"]
+[ext_resource type="AudioStream" uid="uid://cd3ts8jfudq4p" path="res://resources/audio/score.mp3" id="4_o1ht6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mg5ex"]
 bounce = 0.5
@@ -60,6 +61,90 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0e48y"]
 size = Vector2(16, 16)
 
+[sub_resource type="Animation" id="Animation_yk8ku"]
+resource_name = "score"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FinalDiceResult:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(8, 8), Vector2(8, 0), Vector2(8, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FinalDiceResult:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.16674982, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FinalDiceResult:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.26244184, 0.24526232, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o1ht6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FinalDiceResult:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FinalDiceResult:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FinalDiceResult:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tannu"]
+_data = {
+&"RESET": SubResource("Animation_o1ht6"),
+&"score": SubResource("Animation_yk8ku")
+}
+
 [node name="Dice" type="RigidBody2D"]
 z_index = 2
 input_pickable = true
@@ -72,6 +157,8 @@ position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_ir8iy")
 animation = &"rolling"
 autoplay = "rolling"
+frame = 5
+frame_progress = 0.050215747
 
 [node name="CollisionDice" type="CollisionShape2D" parent="."]
 position = Vector2(8, 8)
@@ -80,6 +167,14 @@ shape = SubResource("RectangleShape2D_0e48y")
 [node name="FinalDiceResult" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
 texture = ExtResource("3_oi81l")
+
+[node name="ScoreAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tannu")
+}
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_o1ht6")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="RollingDice" to="." method="_on_animated_sprite_2d_animation_finished"]

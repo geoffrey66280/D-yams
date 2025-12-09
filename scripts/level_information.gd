@@ -48,10 +48,20 @@ func update_ui(score = null) -> void:
 	$BossName.text = level_information["bosses"][level_information["actual_lvl"]]
 	$Score.text = "Goal: " + str(level_information["score_to_reach"][level_information["actual_lvl"]])
 	$Reward.text = "reward : " + str(level_information["actual_lvl"])
-	if(score):
-		$PlayerScore.text = "score: " + str(score)
-	else:
-		$PlayerScore.text = "score: 0"
+	$PlayerScore.text = "score: 0"
+	
+	var target_score = score if score != null else 0
+	var speed = 150
+	var current_score = 0
+	while current_score < target_score:
+		current_score += speed * get_process_delta_time()
+		if current_score > target_score:
+			current_score = target_score
+		$PlayerScore.text = "score: " + str(int(current_score))
+		await get_tree().process_frame
+	await get_tree().create_timer(1).timeout
+	$Tokens.text = "0"
+	$Mult.text = "0"
 
 func compute_score(dices_values: Array, user_combination_name: String) -> int:
 	var final_score: int = 0
@@ -140,3 +150,16 @@ func detect_combination(dices: Array) -> Array:
 	valid_combinations.append("Chance")
 
 	return valid_combinations
+
+
+func _on_throwing_dices_score_ui(tokens: Variant) -> void:
+	var user_token = int($Tokens.text)
+	user_token += tokens
+	$Tokens.text = str(user_token)
+
+
+func _on_throwing_dices_score_combination(combination_name: Variant) -> void:
+	var tokens = str(level_information["combinations"][combination_name]["tokens"])
+	var mult = str(level_information["combinations"][combination_name]["mult"])
+	$Tokens.text = tokens
+	$Mult.text = mult

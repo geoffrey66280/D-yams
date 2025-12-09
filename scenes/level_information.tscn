@@ -62,3 +62,25 @@ text = "player score"
 label_settings = ExtResource("2_jdgcw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Tokens" type="Label" parent="."]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 92.0
+offset_right = 31.0
+offset_bottom = 105.0
+text = "0"
+label_settings = ExtResource("2_jdgcw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Mult" type="Label" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 92.0
+offset_right = 61.0
+offset_bottom = 105.0
+text = "0"
+label_settings = ExtResource("2_jdgcw")
+horizontal_alignment = 1
+vertical_alignment = 1
