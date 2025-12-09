@@ -36,11 +36,11 @@ offset_bottom = 88.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonCombination" type="Button" parent="."]
-offset_left = 16.0
+offset_left = 72.0
 offset_top = 144.0
-offset_right = 71.0
+offset_right = 130.0
 offset_bottom = 175.0
-text = "Mains"
+text = "Hands"
 
 [node name="MenuOptions" parent="." instance=ExtResource("7_u5sy4")]
 visible = false
@@ -69,6 +69,10 @@ text = "Options"
 label_settings = ExtResource("9_0tnpc")
 
 [node name="popup_score" parent="." instance=ExtResource("10_vtaks")]
+offset_left = 32.0
+offset_top = 24.0
+offset_right = 32.0
+offset_bottom = 24.0
 
 [connection signal="pressed" from="ButtonCombination" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]

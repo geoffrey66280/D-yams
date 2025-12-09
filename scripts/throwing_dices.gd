@@ -132,7 +132,7 @@ func pass_level(score):
 	throwing_count = 3
 	dices_kept = [0,0,0,0,0]
 	if(score >= level_info["score_to_reach"][level_info["actual_lvl"]]):
-		level_info["user_money"] += level_info["actual_lvl"]
+		level_info["user_diamond"] += level_info["actual_lvl"]
 		level_info["actual_lvl"] += 1
 		level_info_node.update_ui()
 		change_keep_score_button_visibility()
