@@ -1,8 +1,8 @@
 extends Control
 
-@onready var full_screen_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CheckButton
-@onready var slider_volume = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/HSlider
-@onready var menu_resolution = $PanelContainer/MarginContainer/VBoxContainer/OptionButton
+@onready var slider_volume = $HUD_Fond/Volume
+@onready var full_screen_button = $HUD_Fond/Fullscreen_Button
+@onready var menu_resolution = $HUD_Fond/ScreenSettings_Button
 
 func _ready():
 	visible = false

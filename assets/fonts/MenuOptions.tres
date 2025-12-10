@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b8w7b7mlhx00r"]
+
+[ext_resource type="FontFile" uid="uid://dcoaauksyu4hl" path="res://assets/fonts/Baskic8.otf" id="1_tde64"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tde64"]
+content_margin_top = 8.0
+bg_color = Color(0.14901961, 0.14901961, 0.25882354, 1)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[resource]
+default_font = ExtResource("1_tde64")
+default_font_size = 12
+PopupMenu/font_sizes/font_size = 12
+PopupMenu/fonts/font = ExtResource("1_tde64")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_tde64")

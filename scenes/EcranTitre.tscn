@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bd8lb86450i4g"]
+[gd_scene load_steps=9 format=3 uid="uid://bd8lb86450i4g"]
 
 [ext_resource type="Script" uid="uid://xmknga23x04d" path="res://scripts/ecran_titre.gd" id="1_2a7pj"]
 [ext_resource type="Texture2D" uid="uid://dcfmojtk6f2kf" path="res://assets/Dyams.png" id="1_bmonq"]
 [ext_resource type="PackedScene" uid="uid://bbwu0goj8tpe6" path="res://scenes/MenuOptions.tscn" id="3_crd2e"]
+[ext_resource type="Texture2D" uid="uid://8l1ykxbf1hx8" path="res://assets/sprites/options_fond.png" id="3_iihdn"]
+[ext_resource type="Texture2D" uid="uid://dfuq6o4qd0pjv" path="res://assets/sprites/options_button.png" id="4_kfs4r"]
+[ext_resource type="Texture2D" uid="uid://bw4f8y3fbwhfk" path="res://assets/sprites/options_play.png" id="4_qdpn8"]
+[ext_resource type="Texture2D" uid="uid://5wx2dkybokh6" path="res://assets/sprites/options_buttonpressed.png" id="5_iihdn"]
+[ext_resource type="LabelSettings" uid="uid://bljxdh1x8h0ih" path="res://assets/fonts/options.tres" id="5_qdpn8"]
 
 [node name="EcranTitre" type="Control"]
 layout_mode = 3
@@ -23,6 +28,21 @@ grow_vertical = 2
 texture = ExtResource("1_bmonq")
 expand_mode = 1
 
+[node name="Fond Box" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -56.0
+offset_right = 48.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_iihdn")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -30,25 +50,58 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -56.5
+offset_left = -36.0
+offset_top = -47.0
 offset_right = 35.0
-offset_bottom = 56.5
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 5
 
-[node name="PlayButton" type="Button" parent="VBoxContainer"]
+[node name="Play_Button" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-text = "Play"
+texture_normal = ExtResource("4_qdpn8")
+texture_pressed = ExtResource("5_iihdn")
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Options"
+[node name="Play_Label" type="Label" parent="VBoxContainer/Play_Button"]
+layout_mode = 0
+offset_left = 0.5
+offset_top = 8.0
+offset_right = 79.0
+offset_bottom = 24.0
+text = "PLAY"
+label_settings = ExtResource("5_qdpn8")
+horizontal_alignment = 1
 
-[node name="ExitButton" type="Button" parent="VBoxContainer"]
+[node name="Options_Button" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-text = "Exit"
+texture_normal = ExtResource("4_kfs4r")
+texture_pressed = ExtResource("5_iihdn")
+
+[node name="Options_Label" type="Label" parent="VBoxContainer/Options_Button"]
+layout_mode = 0
+offset_left = 0.5
+offset_top = 8.0
+offset_right = 78.5
+offset_bottom = 31.0
+text = "OPTIONS"
+label_settings = ExtResource("5_qdpn8")
+horizontal_alignment = 1
+
+[node name="Exit_Button" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_kfs4r")
+texture_pressed = ExtResource("5_iihdn")
+
+[node name="Exit_Label" type="Label" parent="VBoxContainer/Exit_Button"]
+layout_mode = 0
+offset_left = 0.5
+offset_top = 8.0
+offset_right = 78.5
+offset_bottom = 24.0
+text = "QUIT"
+label_settings = ExtResource("5_qdpn8")
+horizontal_alignment = 1
 
 [node name="TitreJeu" type="Label" parent="."]
 layout_mode = 0
@@ -61,8 +114,20 @@ theme_override_font_sizes/font_size = 28
 text = "D-Yams"
 
 [node name="MenuOptions" parent="." instance=ExtResource("3_crd2e")]
-layout_mode = 0
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -74.0
+offset_right = -118.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options_Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit_Button" to="." method="_on_exit_button_pressed"]
