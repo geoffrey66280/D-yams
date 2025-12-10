@@ -69,7 +69,7 @@ func reset_dice_position():
 	rotation = 0
 
 func reset_right_position():
-	last_position = global_transform.origin
+	rotation = 0
 	global_transform.origin = base_position
 	
 @warning_ignore("unused_parameter")

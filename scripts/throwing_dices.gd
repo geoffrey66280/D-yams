@@ -61,7 +61,6 @@ func _on_dice_rolled(result, index):
 		dice_results.append(result)
 		if dice_results.size() == number_of_dices():
 			change_keep_score_button_visibility()
-			dice_results = []
 
 func number_of_dices():
 	var dice_count = 0
@@ -70,13 +69,19 @@ func number_of_dices():
 			dice_count += 1
 	return dice_count
 	
-func change_keep_score_button_visibility():
+func change_keep_score_button_visibility(hide = null):
 	if(throwing_count > 0):
 		$ThrowButton.disabled = false
-		$ScoreButton.show()
+		if(hide):
+			$ScoreButton.hide()
+		else:
+			$ScoreButton.show()
 	else:
 		$ThrowButton.disabled = true
-		$ScoreButton.show()
+		if(hide):
+			$ScoreButton.hide()
+		else:
+			$ScoreButton.show()
 
 func are_dices_all_selectioned():
 	for dice in dices_kept:
@@ -86,9 +91,10 @@ func are_dices_all_selectioned():
 
 
 func _on_throw_button_button_up() -> void:
+	dice_results = []
 	if(throwing_count > 0 and not are_dices_all_selectioned()):
-		$ScoreButton.show()
 		$ThrowButton.disabled = true
+		$ScoreButton.hide()
 		call_deferred("_init_dices")
 		play_roll_sound()
 		var index := 0
@@ -115,8 +121,18 @@ func _on_keep_button_button_up() -> void:
 
 func _on_score_button_button_up() -> void:
 	var pop_up_score = get_node("../../popup_score")
+	var all_dices = []
+	var i = 0
+	for dice in dices_kept:
+		if dice == 0:
+			all_dices.append(dice_results[i])
+		else:
+			all_dices.append(dices_kept[i])
+		i += 1
 	if (pop_up_score.visible == false):
-		pop_up_score.change_combinations_visibility(dices_kept)
+		print(dice_results)
+		print(dices_kept)
+		pop_up_score.change_combinations_visibility(all_dices)
 		pop_up_score.visible = true
 	else:
 		pop_up_score.visible = false
@@ -144,12 +160,13 @@ func pass_level(score):
 	var level_info_node = get_node("../../LevelInformation")
 	var level_info = level_info_node.level_information
 	throwing_count = 3
+	change_keep_score_button_visibility(true)
+	$ScoreButton.hide()
 	dices_kept = [0,0,0,0,0]
 	if(score >= level_info["score_to_reach"][level_info["actual_lvl"]]):
 		level_info["user_diamond"] += level_info["actual_lvl"]
 		level_info["actual_lvl"] += 1
 		level_info_node.update_ui()
-		change_keep_score_button_visibility()
 	else:
 		print('you loose')
 		
