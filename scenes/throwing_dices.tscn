@@ -101,6 +101,8 @@ label_settings = ExtResource("7_eafex")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="RollAudio" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="button_up" from="ThrowButton" to="." method="_on_button_button_up"]
 [connection signal="button_up" from="ThrowButton" to="." method="_on_throw_button_button_up"]
 [connection signal="button_up" from="KeepButton" to="." method="_on_keep_button_button_up"]

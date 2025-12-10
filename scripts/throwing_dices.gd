@@ -90,6 +90,7 @@ func _on_throw_button_button_up() -> void:
 		$ScoreButton.show()
 		$ThrowButton.disabled = true
 		call_deferred("_init_dices")
+		play_roll_sound()
 		var index := 0
 		for kept in dices_kept:
 			if kept == 0:
@@ -151,3 +152,23 @@ func pass_level(score):
 		change_keep_score_button_visibility()
 	else:
 		print('you loose')
+		
+func play_roll_sound():
+	var folder = "res://resources/audio/throwing_dices/"
+	var files = DirAccess.get_files_at(folder)
+
+	var mp3s : Array = []
+	for f in files:
+		if f.ends_with(".mp3"):
+			mp3s.append(f)
+
+	if mp3s.is_empty():
+		push_error("Aucun mp3 trouvé dans " + folder)
+		return
+
+	var random_file = folder + mp3s[randi() % mp3s.size()]
+	$RollAudio.stream = load(random_file)
+	randomize()
+	var random_pitch = randf_range(0.95, 1.05)
+	$RollAudio.pitch_scale = random_pitch
+	$RollAudio.play()
