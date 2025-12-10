@@ -1,6 +1,9 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dlfdh15f0qkom"]
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://dlfdh15f0qkom"]
+
+[ext_resource type="FontFile" uid="uid://dcoaauksyu4hl" path="res://assets/fonts/Baskic8.otf" id="1_ex67f"]
 
 [sub_resource type="FontVariation" id="FontVariation_k6k3v"]
+base_font = ExtResource("1_ex67f")
 
 [resource]
 font = SubResource("FontVariation_k6k3v")
