@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bbwu0goj8tpe6"]
+[gd_scene load_steps=18 format=3 uid="uid://bbwu0goj8tpe6"]
 
 [ext_resource type="Script" uid="uid://q57ejhi8w0at" path="res://scripts/menu_options.gd" id="1_cfg3g"]
 [ext_resource type="Texture2D" uid="uid://8l1ykxbf1hx8" path="res://assets/sprites/options_fond.png" id="2_4thc0"]
@@ -45,9 +45,11 @@ corner_radius_bottom_left = 7
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4thc0"]
 
+[sub_resource type="FontVariation" id="FontVariation_4thc0"]
+base_font = ExtResource("4_4fkxp")
+spacing_top = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4thc0"]
-content_margin_left = 7.0
-content_margin_top = 8.0
 bg_color = Color(0.11372549, 0.11372549, 0.2, 1)
 corner_radius_top_left = 7
 corner_radius_top_right = 7
@@ -55,12 +57,8 @@ corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tcob8"]
-content_margin_left = 7.0
-content_margin_top = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xijr8"]
-content_margin_left = 7.0
-content_margin_top = 8.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8otd"]
 
@@ -128,7 +126,7 @@ offset_right = 212.0
 offset_bottom = 100.0
 size_flags_horizontal = 4
 theme = ExtResource("3_piceu")
-theme_override_fonts/font = ExtResource("4_4fkxp")
+theme_override_fonts/font = SubResource("FontVariation_4thc0")
 theme_override_font_sizes/font_size = 12
 theme_override_styles/normal = SubResource("StyleBoxFlat_4thc0")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_tcob8")
