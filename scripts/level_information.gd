@@ -8,12 +8,27 @@ var level_information: Dictionary = {
 	"bosses": {
 		1: "The great barbarian",
 		2: "The ultimate goat",
-		3: "Heat the hitter"
+		3: "Heat the hitter",
+		4: "The great barbarian",
+		5: "The ultimate goat",
+		6: "Heat the hitter",
+		7: "The great barbarian",
+		8: "The ultimate goat",
+		9: "Heat the hitter",
+		10: "The great barbarian",
+		11: "The ultimate goat",
+		12: "Heat the hitter",
 	},
 	"score_to_reach": {
 		1: 50,
-		2: 100,
-		3: 200,
+		2: 50,
+		3: 50,
+		4: 50,
+		5: 50,
+		6: 50,
+		7: 50,
+		8: 50,
+		9: 50,
 	},
 	"round_score": 0,
 	"user_dices": {
@@ -41,14 +56,20 @@ var level_information: Dictionary = {
 
 func _ready() -> void:
 	level_information["actual_lvl"] = 1
-	update_ui()
+	update_ui(0, 3)
 
-func update_ui(score = null) -> void:
+func update_ui(score = null, rolls_remaining = null) -> void:
+	var lvl = level_information["actual_lvl"]
 	# Séparer la mise à jour UI rend le code plus propre
-	$BossName.text = level_information["bosses"][level_information["actual_lvl"]]
-	$Score.text = "Goal: " + str(level_information["score_to_reach"][level_information["actual_lvl"]])
-	$Reward.text = "reward : " + str(level_information["actual_lvl"])
+	$BossName.text = level_information["bosses"][lvl]
+	$Score.text = "Goal: " + str(level_information["score_to_reach"][lvl])
+	$Reward.text = "reward : " + str(lvl)
+	$Diamonds.text = str(level_information["user_diamond"])
 	$PlayerScore.text = "score: 0"
+	if(rolls_remaining != null):
+		$RollsRemaining.text = str(rolls_remaining)
+	$SubLevel.text = str(((lvl - 1) % 5) + 1) + "/5"
+	$ActualLevel.text = str(((lvl - 1) / 5) + 1) + "/5"
 	
 	var target_score = score if score != null else 0
 	var speed = 150

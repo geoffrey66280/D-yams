@@ -92,6 +92,7 @@ func are_dices_all_selectioned():
 
 func _on_throw_button_button_up() -> void:
 	dice_results = []
+	var level_info_node = get_node("../../LevelInformation")
 	if(throwing_count > 0 and not are_dices_all_selectioned()):
 		$ThrowButton.disabled = true
 		$ScoreButton.hide()
@@ -107,7 +108,10 @@ func _on_throw_button_button_up() -> void:
 				dice.launch()
 			index += 1
 		throwing_count -= 1
+		level_info_node.update_ui(null, throwing_count)
 	else:
+		throwing_count -= 1
+		level_info_node.update_ui(null, throwing_count)
 		finish_level()
 
 func finish_level():
@@ -124,15 +128,15 @@ func _on_score_button_button_up() -> void:
 	var pop_up_score = get_node("../../popup_score")
 	var all_dices = []
 	var i = 0
+	var j = 0
 	for dice in dices_kept:
 		if dice == 0:
-			all_dices.append(dice_results[i])
+			all_dices.append(dice_results[j])
+			j += 1
 		else:
 			all_dices.append(dices_kept[i])
 		i += 1
 	if (pop_up_score.visible == false):
-		print(dice_results)
-		print(dices_kept)
 		pop_up_score.change_combinations_visibility(all_dices)
 		pop_up_score.visible = true
 	else:
@@ -144,9 +148,11 @@ func _on_popup_score_combination(combination_name: Variant) -> void:
 	var level_info_node = get_node("../../LevelInformation")
 	var all_dices = []
 	var i = 0
+	var j = 0
 	for dice in dices_kept:
 		if dice == 0:
-			all_dices.append(dice_results[i])
+			all_dices.append(dice_results[j])
+			j += 1
 		else:
 			all_dices.append(dices_kept[i])
 		i += 1
@@ -175,7 +181,7 @@ func pass_level(score):
 	if(score >= level_info["score_to_reach"][level_info["actual_lvl"]]):
 		level_info["user_diamond"] += level_info["actual_lvl"]
 		level_info["actual_lvl"] += 1
-		level_info_node.update_ui()
+		level_info_node.update_ui(null, throwing_count)
 	else:
 		print('you loose')
 		
