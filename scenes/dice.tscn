@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://d0x6hme17ua2e" path="res://scripts/dice.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://dsm4ponyom4yf" path="res://assets/sprites/de_sheet.png" id="2_mg5ex"]
 [ext_resource type="Texture2D" uid="uid://b50acvtq0eo05" path="res://assets/sprites/de_4.png" id="3_oi81l"]
-[ext_resource type="AudioStream" uid="uid://cd3ts8jfudq4p" path="res://resources/audio/score.mp3" id="4_o1ht6"]
+[ext_resource type="AudioStream" uid="uid://d1sdf0ltpuvqf" path="res://resources/audio/score3.mp3" id="4_o1ht6"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_mg5ex"]
 bounce = 0.5
@@ -176,6 +176,7 @@ libraries = {
 
 [node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_o1ht6")
+volume_db = 5.571
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="animation_finished" from="RollingDice" to="." method="_on_animated_sprite_2d_animation_finished"]

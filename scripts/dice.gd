@@ -83,7 +83,7 @@ func animate_score(pitch):
 	$ScoreAnimation.play("score")
 	$ScoreSound.pitch_scale = pitch
 	$ScoreSound.play()
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.3).timeout
 
 func play_rolling_song():
 	pass

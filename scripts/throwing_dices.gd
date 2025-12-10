@@ -3,7 +3,7 @@ extends Node2D
 var dice_results: Array = []
 var dices_kept = [0,0,0,0,0]
 var throwing_count = 3
-var animation_score_pitch = 1
+var animation_score_pitch = 0.7
 
 signal score_ui(tokens)
 signal score_combination(combination_name)
@@ -103,6 +103,7 @@ func _on_throw_button_button_up() -> void:
 				var dice = get_child(index)
 				dice.sleeping = true
 				dice.global_transform.origin = Vector2(100 + index * 30,100)
+				await get_tree().create_timer(0.01).timeout
 				dice.launch()
 			index += 1
 		throwing_count -= 1
@@ -141,7 +142,15 @@ func _on_score_button_button_up() -> void:
 
 func _on_popup_score_combination(combination_name: Variant) -> void:
 	var level_info_node = get_node("../../LevelInformation")
-	var scored = level_info_node.compute_score(dices_kept, combination_name)
+	var all_dices = []
+	var i = 0
+	for dice in dices_kept:
+		if dice == 0:
+			all_dices.append(dice_results[i])
+		else:
+			all_dices.append(dices_kept[i])
+		i += 1
+	var scored = level_info_node.compute_score(all_dices, combination_name)
 	_on_score_button_button_up()
 	$ScoreButton.hide()
 	emit_signal("score_combination", combination_name)
@@ -152,7 +161,7 @@ func _on_popup_score_combination(combination_name: Variant) -> void:
 			dice.animate_score(animation_score_pitch)
 			emit_signal("score_ui", dice.final_random_value)
 			await dice.animate_score(animation_score_pitch)
-	animation_score_pitch = 1
+	animation_score_pitch = 0.7
 	await level_info_node.update_ui(scored)
 	pass_level(scored)
 	
@@ -189,3 +198,5 @@ func play_roll_sound():
 	var random_pitch = randf_range(0.95, 1.05)
 	$RollAudio.pitch_scale = random_pitch
 	$RollAudio.play()
+	
+	
