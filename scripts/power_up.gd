@@ -1,4 +1,4 @@
-extends Resource
+extends Control
 
 var power_ups = [
 	{"id": 1, "name": "Extra 6", "description": "Replace a chosen value of a dice by a 6 forever", "rarity": 1},
@@ -18,26 +18,21 @@ var power_ups = [
 	{"id": 15, "name": "Dice Reversal", "description": "All dice values are reversed (6 becomes 1, etc.) (1 round)", "rarity": 2},
 ]
 
-# récupère 3 powerups pour les proposer au joueur (1 choix possible)
-func get_3_random_power_ups(powerups: Array) -> Array:
-	var offered: Array = []
-
-	# Créer le pool pondéré
+func get_random_power_up_and_initiate():
+	# Construire le pool pondéré
 	var pool: Array = []
-	for p in powerups:
+	for p in power_ups:
 		var weight = 4 - p.rarity
 		for i in range(weight):
 			pool.append(p)
 
-	# Tirage unique
-	while offered.size() < 3 and pool.size() > 0:
-		randomize()
-		var index = randi() % pool.size()
-		var p = pool[index]
-		if p not in offered:
-			offered.append(p)
-		pool.remove_at(index)  # on enlève l'élément tiré
-	return offered
+	if pool.is_empty():
+		return null
+
+	randomize()
+	var index = randi() % pool.size()
+	$Background/PowerUpContainer/PowerUpNameButton/PowerUpNameLabel.text = pool[index]["name"]
+	$Background/PowerUpContainer/PowerUpDescriptionLabel.text = pool[index]["description"]
 	
 	
 # changer la valeur d'une face d'un dé dans levelinfo en récupérant l'index du dé
@@ -82,3 +77,11 @@ func skip_next_level():
 # 3 devient 4 et inversement
 func reverse_dices_values():
 	pass
+
+
+func _on_background_mouse_entered() -> void:
+	$Background.texture = preload("res://assets/sprites/options_fond_hover.png")
+
+
+func _on_background_mouse_exited() -> void:
+		$Background.texture = preload("res://assets/sprites/options_fond.png")

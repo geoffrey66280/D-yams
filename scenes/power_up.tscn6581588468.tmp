@@ -1,0 +1,61 @@
+[gd_scene load_steps=7 format=3 uid="uid://g76nsy687wlv"]
+
+[ext_resource type="Texture2D" uid="uid://8l1ykxbf1hx8" path="res://assets/sprites/options_fond.png" id="1_j7my0"]
+[ext_resource type="Script" uid="uid://bwft0srd0vgqr" path="res://scripts/power_up.gd" id="1_uk6or"]
+[ext_resource type="Texture2D" uid="uid://5wx2dkybokh6" path="res://assets/sprites/options_buttonpressed.png" id="2_6iuya"]
+[ext_resource type="LabelSettings" uid="uid://dlfdh15f0qkom" path="res://assets/fonts/global_font.tres" id="3_uk6or"]
+
+[sub_resource type="FontVariation" id="FontVariation_uk6or"]
+
+[sub_resource type="Theme" id="Theme_bmfpq"]
+default_font = SubResource("FontVariation_uk6or")
+
+[node name="PowerUp" type="Control"]
+custom_minimum_size = Vector2(96, 94)
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_uk6or")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 94.0
+theme = SubResource("Theme_bmfpq")
+texture = ExtResource("1_j7my0")
+
+[node name="PowerUpContainer" type="VBoxContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -39.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PowerUpNameButton" type="TextureButton" parent="Background/PowerUpContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_6iuya")
+
+[node name="PowerUpNameLabel" type="Label" parent="Background/PowerUpContainer/PowerUpNameButton"]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 21.0
+label_settings = ExtResource("3_uk6or")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PowerUpDescriptionLabel" type="Label" parent="Background/PowerUpContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+label_settings = ExtResource("3_uk6or")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[connection signal="mouse_entered" from="Background" to="." method="_on_background_mouse_entered"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqepaav6hbda3"]
+
+[ext_resource type="PackedScene" uid="uid://g76nsy687wlv" path="res://scenes/power_up.tscn" id="1_7c0gb"]
+[ext_resource type="Texture2D" uid="uid://8l1ykxbf1hx8" path="res://assets/sprites/options_fond.png" id="1_78e52"]
+[ext_resource type="Script" uid="uid://bfllxxdiuxv3g" path="res://scripts/power_ups.gd" id="1_nve50"]
+
+[node name="PowerUps" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nve50")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 187.0
+offset_bottom = 94.0
+texture = ExtResource("1_78e52")
+
+[node name="PowerUpContainer" type="HBoxContainer" parent="TextureRect"]
+custom_minimum_size = Vector2(300, 94)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -22.0
+offset_right = 225.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="PowerUp" parent="TextureRect/PowerUpContainer" instance=ExtResource("1_7c0gb")]
+layout_mode = 2
+
+[node name="PowerUp2" parent="TextureRect/PowerUpContainer" instance=ExtResource("1_7c0gb")]
+layout_mode = 2
+
+[node name="PowerUp3" parent="TextureRect/PowerUpContainer" instance=ExtResource("1_7c0gb")]
+layout_mode = 2
