@@ -18,4 +18,4 @@ func _on_button_pressed():
 func _on_button_options_pressed():
 	if $PopupCombination.visible == true:
 		$PopupCombination.visible = false
-	$MenuOptions.visible = not $MenuOptions.visible
+	$CanvasMenuOptions/MenuOptions.visible = not $CanvasMenuOptions/MenuOptions.visible

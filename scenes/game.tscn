@@ -15,11 +15,10 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u5sy4")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasPowerUp" type="CanvasLayer" parent="."]
 
-[node name="PowerUps" parent="CanvasLayer" instance=ExtResource("2_kvpfn")]
+[node name="PowerUps" parent="CanvasPowerUp" instance=ExtResource("2_kvpfn")]
 z_index = 8
-anchors_preset = 8
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -40,6 +39,7 @@ texture = ExtResource("1_iywne")
 metadata/_edit_use_anchors_ = true
 
 [node name="PopupCombination" parent="." instance=ExtResource("4_lbhrr")]
+visible = false
 offset_left = 160.0
 offset_top = 88.0
 offset_right = 160.0
@@ -53,16 +53,13 @@ offset_right = 68.0
 offset_bottom = 128.0
 text = "Hands"
 
-[node name="MenuOptions" parent="." instance=ExtResource("7_u5sy4")]
-visible = false
-z_index = 5
-
 [node name="popup_score" parent="." instance=ExtResource("10_vtaks")]
 z_index = 5
 offset_left = 32.0
 offset_top = 24.0
 offset_right = 32.0
 offset_bottom = 24.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonOptions" type="Button" parent="."]
 offset_left = 278.0
@@ -82,10 +79,17 @@ offset_bottom = 17.0
 text = "Options"
 label_settings = ExtResource("9_0tnpc")
 
-[connection signal="power_up_chosen" from="CanvasLayer/PowerUps" to="Arena/ThrowingDices" method="_on_power_ups_power_up_chosen"]
+[node name="CanvasMenuOptions" type="CanvasLayer" parent="."]
+
+[node name="MenuOptions" parent="CanvasMenuOptions" instance=ExtResource("7_u5sy4")]
+z_index = 10
+offset_top = -2.0
+offset_bottom = -2.0
+
+[connection signal="power_up_chosen" from="CanvasPowerUp/PowerUps" to="Arena/ThrowingDices" method="_on_power_ups_power_up_chosen"]
 [connection signal="score_combination" from="Arena/ThrowingDices" to="LevelInformation" method="_on_throwing_dices_score_combination"]
 [connection signal="score_ui" from="Arena/ThrowingDices" to="LevelInformation" method="_on_throwing_dices_score_ui"]
-[connection signal="show_power_up" from="Arena/ThrowingDices" to="CanvasLayer/PowerUps" method="_on_throwing_dices_show_power_up"]
+[connection signal="show_power_up" from="Arena/ThrowingDices" to="CanvasPowerUp/PowerUps" method="_on_throwing_dices_show_power_up"]
 [connection signal="pressed" from="ButtonCombination" to="." method="_on_button_pressed"]
 [connection signal="combination" from="popup_score" to="Arena/ThrowingDices" method="_on_popup_score_combination"]
 [connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]

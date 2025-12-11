@@ -29,3 +29,7 @@ func _on_exit_button_pressed():
 
 func _on_menu_button_button_up() -> void:
 	visible = false
+
+
+func _on_volume_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value / 5)

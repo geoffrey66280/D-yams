@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 	pass
 
 func display_power_ups():
-	var level_info_node = get_node("../LevelInformation")
+	var level_info_node = get_node("../../LevelInformation")
 	var power_ups = level_info_node.power_ups
 	visible = true
 	for power_up in $TextureRect/PowerUpContainer.get_children():

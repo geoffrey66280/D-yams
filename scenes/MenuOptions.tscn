@@ -217,5 +217,6 @@ offset_bottom = 24.0
 text = "MENU"
 label_settings = ExtResource("5_piceu")
 
+[connection signal="value_changed" from="HUD_Fond/Volume" to="." method="_on_volume_value_changed"]
 [connection signal="pressed" from="HUD_Fond/Exit_Button" to="." method="_on_exit_button_pressed"]
 [connection signal="button_up" from="HUD_Fond/Menu_Button" to="." method="_on_menu_button_button_up"]

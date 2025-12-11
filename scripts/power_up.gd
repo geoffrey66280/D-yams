@@ -74,7 +74,7 @@ func _on_background_mouse_exited() -> void:
 
 func _on_power_up_chosen(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		var level_info_node = get_node("../../../../LevelInformation")
+		var level_info_node = get_node("../../../../../LevelInformation")
 		var level_info = level_info_node.level_information
 		var power_ups = level_info_node.power_ups
 		level_info["user_power_ups"].append(current_power_up)

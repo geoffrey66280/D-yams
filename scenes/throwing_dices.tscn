@@ -24,58 +24,6 @@ spacing_top = 4
 [node name="ThrowingDices" type="Node2D"]
 script = ExtResource("1_r4itb")
 
-[node name="DicesRack_Texture" type="TextureRect" parent="."]
-z_index = 1
-offset_left = 289.0
-offset_top = 12.0
-offset_right = 313.0
-offset_bottom = 148.0
-size_flags_horizontal = 8
-texture = ExtResource("3_baaet")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ScoreButton" type="Button" parent="CanvasLayer"]
-z_index = 2
-offset_left = 228.0
-offset_top = 122.0
-offset_right = 264.0
-offset_bottom = 144.0
-theme_override_fonts/font = SubResource("FontVariation_2d8ns")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/focus = SubResource("StyleBoxEmpty_lip80")
-text = " Score"
-icon = ExtResource("5_efoqd")
-flat = true
-icon_alignment = 1
-
-[node name="ThrowButton" type="Button" parent="CanvasLayer"]
-z_index = 2
-offset_left = 283.0
-offset_top = 106.0
-offset_right = 319.0
-offset_bottom = 128.0
-theme = SubResource("Theme_lip80")
-theme_override_fonts/font = SubResource("FontVariation_lip80")
-theme_override_font_sizes/font_size = 7
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2d8ns")
-text = "Throw"
-icon = ExtResource("4_h8dyw")
-flat = true
-icon_alignment = 1
-
-[node name="KeepDicesLabel" type="Label" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -78.0
-offset_top = 1.0
-offset_right = -2.0
-offset_bottom = 13.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 8
-text = "Select dices to keep"
-
 [node name="Dice" parent="." instance=ExtResource("1_keuvm")]
 position = Vector2(293, 92)
 
@@ -91,8 +39,58 @@ position = Vector2(293, 35)
 [node name="Dice5" parent="." instance=ExtResource("1_keuvm")]
 position = Vector2(293, 16)
 
+[node name="DicesRack_Texture" type="TextureRect" parent="."]
+z_index = 1
+offset_left = 289.0
+offset_top = 12.0
+offset_right = 313.0
+offset_bottom = 148.0
+size_flags_horizontal = 8
+texture = ExtResource("3_baaet")
+
+[node name="ScoreButton" type="Button" parent="."]
+z_index = 2
+offset_left = 228.0
+offset_top = 122.0
+offset_right = 264.0
+offset_bottom = 144.0
+theme_override_fonts/font = SubResource("FontVariation_2d8ns")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_lip80")
+text = " Score"
+icon = ExtResource("5_efoqd")
+flat = true
+icon_alignment = 1
+
+[node name="ThrowButton" type="Button" parent="."]
+z_index = 2
+offset_left = 283.0
+offset_top = 106.0
+offset_right = 319.0
+offset_bottom = 128.0
+theme = SubResource("Theme_lip80")
+theme_override_fonts/font = SubResource("FontVariation_lip80")
+theme_override_font_sizes/font_size = 7
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2d8ns")
+text = "Throw"
+icon = ExtResource("4_h8dyw")
+flat = true
+icon_alignment = 1
+
+[node name="KeepDicesLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 242.0
+offset_top = 1.0
+offset_right = 318.0
+offset_bottom = 13.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 8
+text = "Select dices to keep"
+
 [node name="RollAudio" type="AudioStreamPlayer2D" parent="."]
 
-[connection signal="button_up" from="CanvasLayer/ScoreButton" to="." method="_on_score_button_button_up"]
-[connection signal="button_up" from="CanvasLayer/ThrowButton" to="." method="_on_button_button_up"]
-[connection signal="button_up" from="CanvasLayer/ThrowButton" to="." method="_on_throw_button_button_up"]
+[connection signal="button_up" from="ScoreButton" to="." method="_on_score_button_button_up"]
+[connection signal="button_up" from="ThrowButton" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="ThrowButton" to="." method="_on_throw_button_button_up"]
