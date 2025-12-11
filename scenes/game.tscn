@@ -84,8 +84,10 @@ offset_bottom = 17.0
 text = "Options"
 label_settings = ExtResource("9_0tnpc")
 
+[connection signal="power_up_chosen" from="PowerUps" to="Arena/ThrowingDices" method="_on_power_ups_power_up_chosen"]
 [connection signal="score_combination" from="Arena/ThrowingDices" to="LevelInformation" method="_on_throwing_dices_score_combination"]
 [connection signal="score_ui" from="Arena/ThrowingDices" to="LevelInformation" method="_on_throwing_dices_score_ui"]
+[connection signal="show_power_up" from="Arena/ThrowingDices" to="PowerUps" method="_on_throwing_dices_show_power_up"]
 [connection signal="pressed" from="ButtonCombination" to="." method="_on_button_pressed"]
 [connection signal="combination" from="popup_score" to="Arena/ThrowingDices" method="_on_popup_score_combination"]
 [connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]

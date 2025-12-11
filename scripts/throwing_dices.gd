@@ -4,7 +4,8 @@ var dice_results: Array = []
 var dices_kept = [0,0,0,0,0]
 var throwing_count = 3
 var animation_score_pitch = 0.7
-
+signal show_power_up()
+signal power_up_chosen()
 signal score_ui(tokens)
 signal score_combination(combination_name)
 
@@ -145,6 +146,7 @@ func _on_score_button_button_up() -> void:
 
 
 func _on_popup_score_combination(combination_name: Variant) -> void:
+	$ThrowButton.disabled = true
 	var level_info_node = get_node("../../LevelInformation")
 	var all_dices = []
 	var i = 0
@@ -175,9 +177,11 @@ func pass_level(score):
 	var level_info_node = get_node("../../LevelInformation")
 	var level_info = level_info_node.level_information
 	throwing_count = 3
-	change_keep_score_button_visibility(true)
 	$ScoreButton.hide()
 	dices_kept = [0,0,0,0,0]
+	emit_signal("show_power_up")
+	await power_up_chosen
+	change_keep_score_button_visibility(true)
 	if(score >= level_info["score_to_reach"][level_info["actual_lvl"]]):
 		level_info["user_diamond"] += level_info["actual_lvl"]
 		level_info["actual_lvl"] += 1
@@ -206,3 +210,7 @@ func play_roll_sound():
 	$RollAudio.play()
 	
 	
+
+
+func _on_power_ups_power_up_chosen() -> void:
+	emit_signal("power_up_chosen")
