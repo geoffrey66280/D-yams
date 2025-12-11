@@ -6,13 +6,25 @@
 
 [node name="PowerUps" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 script = ExtResource("1_nve50")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 187.0
-offset_bottom = 94.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.5
+offset_top = -47.0
+offset_right = 93.5
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_78e52")
 
 [node name="PowerUpContainer" type="HBoxContainer" parent="TextureRect"]

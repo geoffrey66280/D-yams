@@ -7,6 +7,8 @@ base_font = ExtResource("1_tde64")
 spacing_top = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tde64"]
+content_margin_left = 7.0
+content_margin_top = 2.0
 bg_color = Color(0.14901961, 0.14901961, 0.25882354, 1)
 corner_radius_top_left = 7
 corner_radius_top_right = 7

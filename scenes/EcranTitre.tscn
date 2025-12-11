@@ -114,19 +114,7 @@ theme_override_font_sizes/font_size = 28
 text = "D-Yams"
 
 [node name="MenuOptions" parent="." instance=ExtResource("3_crd2e")]
-visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -118.0
-offset_top = -74.0
-offset_right = -118.0
-offset_bottom = -74.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [connection signal="pressed" from="VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options_Button" to="." method="_on_options_button_pressed"]

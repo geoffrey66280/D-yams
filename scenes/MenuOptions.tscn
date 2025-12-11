@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bbwu0goj8tpe6"]
+[gd_scene load_steps=17 format=3 uid="uid://bbwu0goj8tpe6"]
 
 [ext_resource type="Script" uid="uid://q57ejhi8w0at" path="res://scripts/menu_options.gd" id="1_cfg3g"]
 [ext_resource type="Texture2D" uid="uid://8l1ykxbf1hx8" path="res://assets/sprites/options_fond.png" id="2_4thc0"]
@@ -7,8 +7,6 @@
 [ext_resource type="FontFile" uid="uid://dcoaauksyu4hl" path="res://assets/fonts/Baskic8.otf" id="4_4fkxp"]
 [ext_resource type="Texture2D" uid="uid://5wx2dkybokh6" path="res://assets/sprites/options_buttonpressed.png" id="4_piceu"]
 [ext_resource type="LabelSettings" uid="uid://bljxdh1x8h0ih" path="res://assets/fonts/options.tres" id="5_piceu"]
-
-[sub_resource type="Theme" id="Theme_4thc0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pedkb"]
 bg_color = Color(0.14901961, 0.14901961, 0.25882354, 1)
@@ -50,6 +48,8 @@ base_font = ExtResource("4_4fkxp")
 spacing_top = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4thc0"]
+content_margin_left = 7.0
+content_margin_top = 4.0
 bg_color = Color(0.11372549, 0.11372549, 0.2, 1)
 corner_radius_top_left = 7
 corner_radius_top_right = 7
@@ -57,24 +57,64 @@ corner_radius_bottom_right = 7
 corner_radius_bottom_left = 7
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tcob8"]
+content_margin_left = 7.0
+content_margin_top = 4.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xijr8"]
+content_margin_left = 7.0
+content_margin_top = 4.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8otd"]
 
 [node name="MenuOptions" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 2
 script = ExtResource("1_cfg3g")
 
-[node name="HUD_Fond" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 236.0
-offset_bottom = 151.0
-theme = SubResource("Theme_4thc0")
+[node name="INVISIBLE_BG" type="ColorRect" parent="."]
+z_index = 9
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 160.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="HUD_Fond" type="NinePatchRect" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -73.5
+offset_right = 118.0
+offset_bottom = 73.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_4thc0")
+region_rect = Rect2(0, 0, 96, 94)
+patch_margin_left = 26
+patch_margin_top = 30
+patch_margin_right = 21
+patch_margin_bottom = 21
 
 [node name="Volume" type="HSlider" parent="HUD_Fond"]
 custom_minimum_size = Vector2(60, 20)
@@ -123,7 +163,7 @@ layout_mode = 0
 offset_left = 24.0
 offset_top = 80.0
 offset_right = 212.0
-offset_bottom = 100.0
+offset_bottom = 101.0
 size_flags_horizontal = 4
 theme = ExtResource("3_piceu")
 theme_override_fonts/font = SubResource("FontVariation_4thc0")
@@ -138,12 +178,13 @@ popup/item_0/text = "1920x1080"
 popup/item_0/id = 0
 popup/item_1/text = "1280x720"
 popup/item_1/id = 1
+metadata/_edit_group_ = true
 
 [node name="Exit_Button" type="TextureButton" parent="HUD_Fond"]
 layout_mode = 0
-offset_left = 79.0
+offset_left = 128.0
 offset_top = 110.0
-offset_right = 157.0
+offset_right = 206.0
 offset_bottom = 132.0
 texture_normal = ExtResource("3_pedkb")
 texture_pressed = ExtResource("4_piceu")
@@ -158,4 +199,23 @@ text = "QUIT"
 label_settings = ExtResource("5_piceu")
 horizontal_alignment = 1
 
+[node name="Menu_Button" type="TextureButton" parent="HUD_Fond"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 110.0
+offset_right = 108.0
+offset_bottom = 132.0
+texture_normal = ExtResource("3_pedkb")
+texture_pressed = ExtResource("4_piceu")
+
+[node name="Menu_Label" type="Label" parent="HUD_Fond/Menu_Button"]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 8.0
+offset_right = 57.0
+offset_bottom = 24.0
+text = "MENU"
+label_settings = ExtResource("5_piceu")
+
 [connection signal="pressed" from="HUD_Fond/Exit_Button" to="." method="_on_exit_button_pressed"]
+[connection signal="button_up" from="HUD_Fond/Menu_Button" to="." method="_on_menu_button_button_up"]

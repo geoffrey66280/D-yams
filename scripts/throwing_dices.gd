@@ -10,7 +10,6 @@ signal score_ui(tokens)
 signal score_combination(combination_name)
 
 func _ready() -> void:
-	$KeepButton.hide()
 	for dice in get_children():
 		if dice is RigidBody2D:
 			if dice.has_signal("dice_value"):

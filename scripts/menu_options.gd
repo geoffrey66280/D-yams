@@ -25,3 +25,7 @@ func _on_resolution_selected(index):
 func _on_exit_button_pressed():
 	print("Fermeture du jeu...")
 	get_tree().quit()
+
+
+func _on_menu_button_button_up() -> void:
+	visible = false
