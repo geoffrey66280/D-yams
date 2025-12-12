@@ -18,6 +18,7 @@ config/icon="uid://bhrbalvu3oicy"
 [autoload]
 
 LevelInformation="*res://scripts/level_info_data.gd"
+event_bus="*res://scripts/autoloaded_bus.gd"
 
 [display]
 

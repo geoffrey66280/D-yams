@@ -13,6 +13,7 @@ var animation_score_pitch = 0.7
 signal show_power_up()
 signal power_up_chosen()
 signal score_ui(tokens)
+signal add_card_power_up(current_power_up)
 signal score_combination(combination_name)
 			
 

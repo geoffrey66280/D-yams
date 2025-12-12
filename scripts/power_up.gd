@@ -102,6 +102,7 @@ func _on_background_mouse_exited() -> void:
 func _on_power_up_chosen(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		level_info["user_power_ups"].append(current_power_up)
+		event_bus.emit_signal("send_power_up_chosen", current_power_up)
 		current_power_up = {}
 		emit_signal("hide_power_ups")
 	

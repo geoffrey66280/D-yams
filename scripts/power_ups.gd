@@ -21,7 +21,7 @@ func display_power_ups():
 func _on_power_up_chosen():
 	visible = false
 	emit_signal("power_up_chosen")
-
+	
 
 func _on_throwing_dices_show_power_up() -> void:
 	display_power_ups()

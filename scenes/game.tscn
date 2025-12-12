@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6ofiia77k77a"]
+[gd_scene load_steps=13 format=3 uid="uid://b6ofiia77k77a"]
 
 [ext_resource type="Texture2D" uid="uid://bxa0xiwp0vn4j" path="res://assets/sprites/table.png" id="1_iywne"]
 [ext_resource type="Script" uid="uid://c4y1bmg4htenp" path="res://scripts/game.gd" id="1_u5sy4"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ee3wpimgd5f3" path="res://assets/sprites/button_options.png" id="8_gee14"]
 [ext_resource type="LabelSettings" uid="uid://di7nscev3345u" path="res://assets/fonts/button_font.tres" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://ftg1igtjh1fe" path="res://scenes/popup_score.tscn" id="10_vtaks"]
+[ext_resource type="PackedScene" uid="uid://duu6ql6v3rl64" path="res://scenes/deck.tscn" id="12_dinhu"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_u5sy4")
@@ -20,8 +21,6 @@ script = ExtResource("1_u5sy4")
 [node name="PowerUps" parent="CanvasPowerUp" instance=ExtResource("2_kvpfn")]
 visible = false
 z_index = 8
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
@@ -84,9 +83,20 @@ label_settings = ExtResource("9_0tnpc")
 [node name="CanvasMenuOptions" type="CanvasLayer" parent="."]
 
 [node name="MenuOptions" parent="CanvasMenuOptions" instance=ExtResource("7_u5sy4")]
+visible = false
 z_index = 10
-offset_top = -2.0
-offset_bottom = -2.0
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 6.0
+offset_bottom = 1.0
+
+[node name="Deck" parent="." instance=ExtResource("12_dinhu")]
+offset_left = 124.0
+offset_top = 142.0
+offset_right = 124.0
+offset_bottom = 142.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [connection signal="power_up_chosen" from="CanvasPowerUp/PowerUps" to="Arena/ThrowingDices" method="_on_power_ups_power_up_chosen"]
 [connection signal="score_combination" from="Arena/ThrowingDices" to="LevelInformation" method="_on_throwing_dices_score_combination"]

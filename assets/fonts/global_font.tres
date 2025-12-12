@@ -4,6 +4,7 @@
 
 [sub_resource type="FontVariation" id="FontVariation_k6k3v"]
 base_font = ExtResource("1_ex67f")
+spacing_top = 4
 
 [resource]
 font = SubResource("FontVariation_k6k3v")

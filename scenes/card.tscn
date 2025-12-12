@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://mmvke6ob1tat"]
+
+[ext_resource type="Texture2D" uid="uid://8l1ykxbf1hx8" path="res://assets/sprites/options_fond.png" id="1_6u4wf"]
+[ext_resource type="Script" uid="uid://xonqgxwovtpb" path="res://scripts/card.gd" id="1_ktuci"]
+[ext_resource type="Texture2D" uid="uid://5wx2dkybokh6" path="res://assets/sprites/options_buttonpressed.png" id="2_ktuci"]
+[ext_resource type="FontFile" uid="uid://dcoaauksyu4hl" path="res://assets/fonts/Baskic8.otf" id="4_sy11y"]
+
+[sub_resource type="FontVariation" id="FontVariation_6ligt"]
+base_font = ExtResource("4_sy11y")
+spacing_top = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_8w5pg"]
+line_spacing = 0.0
+font = SubResource("FontVariation_6ligt")
+font_size = 4
+
+[sub_resource type="FontVariation" id="FontVariation_kg30u"]
+base_font = ExtResource("4_sy11y")
+spacing_top = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_sy11y"]
+line_spacing = 0.0
+font = SubResource("FontVariation_kg30u")
+font_size = 4
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(43, 42)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 42.0
+size_flags_horizontal = 4
+script = ExtResource("1_ktuci")
+
+[node name="BackgroundCard" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 42.893616
+offset_bottom = 42.0
+texture = ExtResource("1_6u4wf")
+expand_mode = 1
+
+[node name="BackgroundTitle" type="TextureRect" parent="BackgroundCard"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 38.363636
+offset_bottom = 13.0
+texture = ExtResource("2_ktuci")
+expand_mode = 1
+
+[node name="TitleLabel" type="Label" parent="BackgroundCard/BackgroundTitle"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -6.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_8w5pg")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="DescriptionLabel" type="Label" parent="BackgroundCard"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -7.0
+offset_right = -4.8936157
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_sy11y")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
