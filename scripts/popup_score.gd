@@ -1,15 +1,14 @@
 extends Control
 
+var level_info_node = LevelInformation
 signal combination(combination_name)
 
 func _ready() -> void:
 	visible = false
 
 func change_combinations_visibility(dices: Array):
-
-	var level_informations = get_node("../LevelInformation")
-	var valid_combinations = level_informations.detect_combination(dices)
-
+	var valid_combinations = LevelInformation.detect_combination(dices)
+	
 	$Dyams_Button.disabled = true
 	$Fourkind_Button.disabled = true
 	$FullHouse_Button.disabled = true

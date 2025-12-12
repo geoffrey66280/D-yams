@@ -9,8 +9,7 @@ func _ready():
 	generate_list()
 	
 func generate_list():
-	var level_info_node = get_node("../LevelInformation")
-	var combinations = level_info_node.level_information["combinations"]
+	var combinations = LevelInformation.level_information["combinations"]
 	
 	for combo_name in combinations:
 		

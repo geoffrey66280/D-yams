@@ -1,105 +1,90 @@
 extends Node2D
 
+@export var ui_level_info_node: Node
+@onready var throw_button := $ThrowButton
+@onready var score_button := $ScoreButton
+@onready var roll_audio := $RollAudio
+var dices = []
 var dice_results: Array = []
-var dices_kept = [0,0,0,0,0]
-var throwing_count = 3
+var kept_dices = [0,0,0,0,0]
+var level_info_node = LevelInformation
+var level_info = LevelInformation.level_information
 var animation_score_pitch = 0.7
 signal show_power_up()
 signal power_up_chosen()
 signal score_ui(tokens)
 signal score_combination(combination_name)
+			
 
 func _ready() -> void:
 	for dice in get_children():
 		if dice is RigidBody2D:
-			if dice.has_signal("dice_value"):
-				dice.connect("dice_value", Callable(self, "_on_dice_rolled"))
+			dices.append(dice)
+			dice.connect("dice_value", Callable(self, "_on_dice_rolled"))
 			dice.connect("kept", Callable(self, "_on_dice_kept"))
-	$KeepDicesLabel.hide()
-	$ScoreButton.hide()
 
 func _on_dice_kept(result, index):
-	if(throwing_count > 0):
-		if(dices_kept[index] == 0):
-			dices_kept[index] = int(result)
+	if(level_info["throwing_count"] > 0):
+		if(kept_dices[index] == 0):
+			kept_dices[index] = int(result)
 		else:
-			dices_kept[index] = 0
+			kept_dices[index] = 0
+	
+	if(are_all_dices_kept()):
+		throw_button.disabled = true
+	else:
+		throw_button.disabled = false
 
 func send_dices_values():
-	# Récupération des informations du level actuel
-	var level_info_node = get_node("../../LevelInformation")
-	var level_info = level_info_node.level_information
 	var index := 0
 	
-	# Récupération des enfants (tous les dès)
-	for dice in get_children():
-		
-		# Prendre en compte que les dès enfants et non les autres (les dès sont de type RigidBody2D)
-		if dice is RigidBody2D:
-			# Si la valeur contenu dans la liste kept dices est 0 alors le dès n'est pas gardé (la valeur contenu dans kept dices représente la valeur du dès obtenu)
-			var is_dice_kept = level_info["kept_dices"][index]
-			index += 1
+	for dice in dices:
+		var is_dice_kept = level_info["kept_dices"][index]
+		index += 1
 			
-			# si l'index = 0 le dès n'est pas gardé donc on le relance en activant la fonction set_level_information
-			if is_dice_kept == 0:
-				dice.set_level_information(level_info["user_dices"][index], index, true)
-			else:
-				dice.set_level_information(level_info["user_dices"][index], index, false)
+		if is_dice_kept == 0:
+			dice.set_level_information(level_info["user_dices"][index], index, true)
+		else:
+			dice.set_level_information(level_info["user_dices"][index], index, false)
 			
 		
 func _init_dices():
 	send_dices_values()
 
 func _on_dice_rolled(result, index):
-	if(throwing_count == 0):
+	if(level_info["throwing_count"] == 0):
 		dice_results.append(result)
 		if dice_results.size() == number_of_dices():
-			change_keep_score_button_visibility()
+			score_button.show()
+			throw_button.disabled = true
 			dice_results = []
-		dices_kept[index] = result
+		kept_dices[index] = result
 	else:
 		dice_results.append(result)
 		if dice_results.size() == number_of_dices():
-			change_keep_score_button_visibility()
+			score_button.show()
+			throw_button.disabled = false
 
 func number_of_dices():
 	var dice_count = 0
-	for element in dices_kept:
+	for element in kept_dices:
 		if element == 0:
 			dice_count += 1
 	return dice_count
-	
-func change_keep_score_button_visibility(hide = null):
-	if(throwing_count > 0):
-		$ThrowButton.disabled = false
-		if(hide):
-			$ScoreButton.hide()
-		else:
-			$ScoreButton.show()
-	else:
-		$ThrowButton.disabled = true
-		if(hide):
-			$ScoreButton.hide()
-		else:
-			$ScoreButton.show()
 
-func are_dices_all_selectioned():
-	for dice in dices_kept:
-		if dice == 0:
-			return false
-	return true
+func are_all_dices_kept() -> bool:
+	return not kept_dices.has(0)
 
 
 func _on_throw_button_button_up() -> void:
 	dice_results = []
-	var level_info_node = get_node("../../LevelInformation")
-	if(throwing_count > 0 and not are_dices_all_selectioned()):
-		$ThrowButton.disabled = true
-		$ScoreButton.hide()
+	if(level_info["throwing_count"] > 0 and not are_all_dices_kept()):
+		throw_button.disabled = true
+		score_button.hide()
 		call_deferred("_init_dices")
 		play_roll_sound()
 		var index := 0
-		for kept in dices_kept:
+		for kept in kept_dices:
 			if kept == 0:
 				var dice = get_child(index)
 				dice.sleeping = true
@@ -107,109 +92,96 @@ func _on_throw_button_button_up() -> void:
 				await get_tree().create_timer(0.01).timeout
 				dice.launch()
 			index += 1
-		throwing_count -= 1
-		level_info_node.update_ui(null, throwing_count)
+		level_info["throwing_count"] -= 1
+		ui_level_info_node.update_ui(null)
 	else:
-		throwing_count -= 1
-		level_info_node.update_ui(null, throwing_count)
+		level_info["throwing_count"] -= 1
+		ui_level_info_node.update_ui(null)
 		finish_level()
 
 func finish_level():
 	pass
 
-func _on_keep_button_button_up() -> void:
-	var level_info_node = get_node("../../LevelInformation")
-	var level_info = level_info_node.level_information
-	level_info['kept_dices'] = dices_kept
-	change_keep_score_button_visibility()
-
 
 func _on_score_button_button_up() -> void:
 	var pop_up_score = get_node("../../popup_score")
-	var all_dices = []
-	var i = 0
-	var j = 0
-	for dice in dices_kept:
-		if dice == 0:
-			all_dices.append(dice_results[j])
-			j += 1
-		else:
-			all_dices.append(dices_kept[i])
-		i += 1
+	var all_dices = get_dices_values()
 	if (pop_up_score.visible == false):
 		pop_up_score.change_combinations_visibility(all_dices)
 		pop_up_score.visible = true
 	else:
 		pop_up_score.visible = false
 		
-
-
-func _on_popup_score_combination(combination_name: Variant) -> void:
-	$ThrowButton.disabled = true
-	var level_info_node = get_node("../../LevelInformation")
+func get_dices_values():
 	var all_dices = []
 	var i = 0
 	var j = 0
-	for dice in dices_kept:
+	for dice in kept_dices:
 		if dice == 0:
 			all_dices.append(dice_results[j])
 			j += 1
 		else:
-			all_dices.append(dices_kept[i])
+			all_dices.append(kept_dices[i])
 		i += 1
+	return all_dices
+	
+
+
+func _on_popup_score_combination(combination_name: Variant) -> void:
+	throw_button.disabled = true
+	score_button.hide()
+	var all_dices = get_dices_values()
 	var scored = level_info_node.compute_score(all_dices, combination_name)
 	_on_score_button_button_up()
-	$ScoreButton.hide()
 	emit_signal("score_combination", combination_name)
-	for dice in get_children():
-		if dice is RigidBody2D:
-			dice.reset_right_position()
-			animation_score_pitch += 0.05
-			dice.animate_score(animation_score_pitch)
-			emit_signal("score_ui", dice.final_random_value)
-			await dice.animate_score(animation_score_pitch)
+	for dice in dices:
+		dice.reset_right_position()
+		animation_score_pitch += 0.05
+		dice.animate_score(animation_score_pitch)
+		emit_signal("score_ui", dice.final_random_value)
+		await dice.animate_score(animation_score_pitch)
 	animation_score_pitch = 0.7
-	await level_info_node.update_ui(scored)
+	await ui_level_info_node.update_ui(scored, combination_name)
 	pass_level(scored)
 	
 func pass_level(score):
-	var level_info_node = get_node("../../LevelInformation")
-	var level_info = level_info_node.level_information
-	throwing_count = 3
-	$ScoreButton.hide()
-	dices_kept = [0,0,0,0,0]
+	kept_dices = [0,0,0,0,0]
 	emit_signal("show_power_up")
 	await power_up_chosen
-	change_keep_score_button_visibility(true)
 	if(score >= level_info["score_to_reach"][level_info["actual_lvl"]]):
-		level_info["user_diamond"] += level_info["actual_lvl"]
+		level_info["throwing_count"] = level_info["throwing_reset"]
+		level_info["user_diamond"] += level_info["actual_lvl"] * level_info["diamond_multiplier"]
 		level_info["actual_lvl"] += 1
-		level_info_node.update_ui(null, throwing_count)
+		level_info["diamond_multiplier"] = 1
+		ui_level_info_node.update_ui(null)
+		throw_button.disabled = false
 	else:
 		print('you loose')
 		
-func play_roll_sound():
-	var folder = "res://resources/audio/throwing_dices/"
-	var files = DirAccess.get_files_at(folder)
-
-	var mp3s : Array = []
-	for f in files:
-		if f.ends_with(".mp3"):
-			mp3s.append(f)
-
-	if mp3s.is_empty():
-		push_error("Aucun mp3 trouvé dans " + folder)
+func play_roll_sound() -> void:
+	var folder := "res://resources/audio/throwing_dices/"
+	var dir := DirAccess.open(folder)
+	if dir == null:
 		return
 
-	var random_file = folder + mp3s[randi() % mp3s.size()]
-	$RollAudio.stream = load(random_file)
+	var mp3s := []
+	dir.list_dir_begin()
+	while true:
+		var f := dir.get_next()
+		if f == "":
+			break
+		if not dir.current_is_dir() and f.ends_with(".mp3"):
+			mp3s.append(f)
+	dir.list_dir_end()
+
+	if mp3s.is_empty():
+		return
+
 	randomize()
-	var random_pitch = randf_range(0.95, 1.05)
-	$RollAudio.pitch_scale = random_pitch
-	$RollAudio.play()
+	roll_audio.stream = load(folder + mp3s.pick_random())
+	roll_audio.pitch_scale = randf_range(0.95, 1.05)
+	roll_audio.play()
 	
 	
-
-
 func _on_power_ups_power_up_chosen() -> void:
 	emit_signal("power_up_chosen")

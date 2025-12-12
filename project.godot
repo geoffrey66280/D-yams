@@ -13,7 +13,11 @@ config_version=5
 config/name="D-yams"
 run/main_scene="uid://bd8lb86450i4g"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://bhrbalvu3oicy"
+
+[autoload]
+
+LevelInformation="*res://scripts/level_info_data.gd"
 
 [display]
 
