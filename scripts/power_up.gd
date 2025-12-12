@@ -20,19 +20,22 @@ func get_random_power_up_and_initiate(power_ups: Array):
 	$Background/PowerUpContainer/PowerUpNameButton/PowerUpNameLabel.text = pool[index]["name"]
 	$Background/PowerUpContainer/PowerUpDescriptionLabel.text = pool[index]["description"]
 	
-	
+# passif
 # changer la valeur d'une face d'un dé dans levelinfo en récupérant l'index du dé
 # l'index de la valeur à remplacer et la valeur à mettre
 func replace_dice_value_forever(dice_index: int, value_index: int, value: int):
 	var dices_values = level_info["user_dices"][dice_index]
 	dices_values[value_index] = value
 
+# passif
 func get_extra_reroll():
 	level_info["throwing_reset"] += 1
-	
+
+# one shot
 func reroll_one_dice():
 	pass
 	
+# one shot
 # si half est true alors diamond multiplier *2 dans levelinfo
 func change_next_round_score(half = null, double = null):
 	var next_level = level_info["actual_lvl"] + 1
@@ -41,28 +44,28 @@ func change_next_round_score(half = null, double = null):
 	if(half == true):
 		level_info["score_to_reach"][next_level] / 2
 		level_info["diamond_multiplier"] += 1
-	
+
+# one shot
 # valider la combinaison meme si la combinaison n'est pas faite
 func automatically_valid_combination(combination_name: String):
 	pass
 	
-
+# one shot
 func add_twenty_percent_score(score: int):
 	pass
 	
+# passif
 # changer le random
 func favors_dice_values(high = null, low = null):
 	pass
 	
+# one shot
 # changer actual_lvl et diamond multiplier dans levelinfo
 func skip_next_level():
 	level_info["actual_lvl"] += 1
 	level_info["diamond_multiplier"] += 1
 	
-# dans tous les dès du joueur
-# 1 devient 6 et inversement
-# 2 devient 5 et inversement
-# 3 devient 4 et inversement
+# one shot
 func reverse_dices_values():
 	var user_dices = level_info["user_dices"]
 	for dice in user_dices:
@@ -101,3 +104,6 @@ func _on_power_up_chosen(event: InputEvent) -> void:
 		level_info["user_power_ups"].append(current_power_up)
 		current_power_up = {}
 		emit_signal("hide_power_ups")
+	
+func use():
+	print("utilisation du power up")
